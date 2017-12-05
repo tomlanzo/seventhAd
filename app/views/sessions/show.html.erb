@@ -1,0 +1,13 @@
+<h1>Welcome aboard!</h1>
+<h2>You are here:</h2>
+<div>
+<%= render 'table', session: @session, seance: @seance %>
+</div>
+<p>Your game will start in:
+  <span id="countdown" data-starting-at="<%= @session.starting_at.to_i %>">
+    1min30s
+  </span>
+</p>
+
+<p> You are currently 10 players</p>
+

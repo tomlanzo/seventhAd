@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205114109) do
+ActiveRecord::Schema.define(version: 20171205152245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20171205114109) do
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "company_id"
-    t.index ["company_id"], name: "index_players_on_company_id"
+    t.bigint "session_id"
+    t.index ["session_id"], name: "index_players_on_session_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20171205114109) do
     t.string "short_url"
     t.datetime "opened_at"
     t.bigint "seance_id"
+    t.integer "offset"
     t.index ["company_id"], name: "index_sessions_on_company_id"
     t.index ["game_id"], name: "index_sessions_on_game_id"
     t.index ["seance_id"], name: "index_sessions_on_seance_id"
@@ -117,7 +118,7 @@ ActiveRecord::Schema.define(version: 20171205114109) do
   add_foreign_key "answers", "players"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "sessions"
-  add_foreign_key "players", "companies"
+  add_foreign_key "players", "sessions"
   add_foreign_key "questions", "games"
   add_foreign_key "seances", "cinemas"
   add_foreign_key "sessions", "companies"
