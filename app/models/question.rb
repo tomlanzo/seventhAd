@@ -7,4 +7,5 @@ class Question < ApplicationRecord
     in: [1, 2, 3, 4],
     message: "%{value} is not a given answer"
   }
+  has_attachment :photo
 end
