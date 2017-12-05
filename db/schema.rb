@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204161808) do
+ActiveRecord::Schema.define(version: 20171205090837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer "choice"
-    t.boolean "correct"
+    t.boolean "correct", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "session_id"
@@ -74,18 +74,28 @@ ActiveRecord::Schema.define(version: 20171204161808) do
     t.index ["game_id"], name: "index_questions_on_game_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "seances", force: :cascade do |t|
     t.string "room"
+    t.string "movie"
     t.datetime "start_at"
+    t.bigint "cinema_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id"], name: "index_seances_on_cinema_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
-    t.bigint "cinema_id"
     t.bigint "game_id"
-    t.index ["cinema_id"], name: "index_sessions_on_cinema_id"
+    t.string "short_url"
+    t.datetime "opened_at"
+    t.bigint "seance_id"
     t.index ["company_id"], name: "index_sessions_on_company_id"
     t.index ["game_id"], name: "index_sessions_on_game_id"
+    t.index ["seance_id"], name: "index_sessions_on_seance_id"
   end
 
   add_foreign_key "answers", "players"
@@ -93,7 +103,8 @@ ActiveRecord::Schema.define(version: 20171204161808) do
   add_foreign_key "answers", "sessions"
   add_foreign_key "players", "companies"
   add_foreign_key "questions", "games"
-  add_foreign_key "sessions", "cinemas"
+  add_foreign_key "seances", "cinemas"
   add_foreign_key "sessions", "companies"
   add_foreign_key "sessions", "games"
+  add_foreign_key "sessions", "seances"
 end
