@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205090837) do
+ActiveRecord::Schema.define(version: 20171205105042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer "choice"
-    t.boolean "correct", default: false
+    t.boolean "correct", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "session_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20171205090837) do
     t.string "answer_2"
     t.string "answer_3"
     t.string "answer_4"
-    t.string "correct_answer"
+    t.integer "correct_answer", null: false
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
