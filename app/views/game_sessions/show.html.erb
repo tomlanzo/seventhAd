@@ -9,5 +9,6 @@
   </span>
 </p>
 
-<p> You are currently <%= @players_count %> players</p>
-
+<p id="players_present" data-players-count-url="<%= players_count_game_session_path(@game_session) %>">
+  <%= render "players_present", players_count: @players_count %>
+</p>

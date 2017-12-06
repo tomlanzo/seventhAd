@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  game_sessions:
+    players_present:
+      players_count:
+        one: "You are the first player !"
+        other: "You are currently %{count} players."
+
   hello: "Hello world"
