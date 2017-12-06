@@ -1,10 +1,28 @@
 const updateCountdown = (startingAt) => {
   const now = new Date().getTime() / 1000;
   const diff = startingAt - now;
+  let seconds = parseInt(diff, 10);
+  let days = Math.floor(seconds / (3600*24));
+  seconds  -= days*3600*24;
+  let hrs   = Math.floor(seconds / 3600);
+  seconds  -= hrs*3600;
+  let mnts = Math.floor(seconds / 60);
+  seconds  -= mnts*60;
 
   if (diff >= 0) {
-    const label = `${diff}s`;
-    countdown.innerText = label;
+    if (days == 0 && hrs == 0 && mnts == 0) {
+      const label = seconds+" s";
+      countdown.innerText = label;
+    } else if (days == 0 && hrs == 0) {
+      const label = mnts+" min "+seconds+" s";
+      countdown.innerText = label;
+    } else if (days == 0) {
+      const label = hrs+" h "+mnts+" min "+seconds+" s";
+      countdown.innerText = label;
+    } else {
+      const label = days+" d "+hrs+" h "+mnts+" min "+seconds+" s";
+      countdown.innerText = label;
+    }
   }
 
   if (diff <= 0) {
