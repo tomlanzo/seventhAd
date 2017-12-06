@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+# This file should contain all the recor d creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Question.destroy_all
-Session.destroy_all
+GameSession.destroy_all
 Seance.destroy_all
 Game.destroy_all
 Company.destroy_all
@@ -72,7 +72,7 @@ game3 = Game.create!(
     })
 
 Seance.all.each do |seance|
-   Session.create! ([
+   GameSession.create! ([
      { company: Company.all.sample,
        game: game1,
        seance: seance,
@@ -130,4 +130,4 @@ end
  puts "#{Seance.count} seances created"
  puts "#{Game.count} games created"
  puts "#{Question.count} questions created"
- puts "#{Session.count} sessions created"
+ puts "#{GameSession.count} game sessions created"
