@@ -1,8 +1,23 @@
-<h1>Question <%= @question.position%></h1>
-<h2><%= @question.title %></h2>
-<%=  game_session_id = params[:game_session_id] %>
-<%=  question_id = params[:question_id] %>
-
-<%= button_to "A. #{@question.answer_1}",
-    game_session_question_answers_path(games_session_id, question_id), class: "btn btn-primary", method: :post %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h1>Question <%= @question.position%></h1>
+      <h2><%= @question.title %></h2>
+      <%  player_id = params[:player_id] %>
+      <%  question_id = params[:id] %>
+      <%= button_to "A. #{@question.answer_1}",
+        player_question_answers_path(player_id, question_id, answer: 1),
+        class: "btn btn-primary", method: :post%>
+      <%= button_to "B. #{@question.answer_2}",
+        player_question_answers_path(player_id, question_id, answer: 2),
+        class: "btn btn-primary", method: :post %>
+      <%= button_to "C. #{@question.answer_1}",
+        player_question_answers_path(player_id, question_id, answer: 3),
+        class: "btn btn-primary", method: :post %>
+      <%= button_to "D. #{@question.answer_1}",
+        player_question_answers_path(player_id, question_id, answer: 4),
+        class: "btn btn-primary", method: :post %>
+      <% binding.pry %>
+    </div>
+  </div>
+</div>
