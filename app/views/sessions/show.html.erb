@@ -5,16 +5,24 @@
 
    <div class="row">
      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
-        <h1>Welcome aboard!</h1>
-            <h2>You are here:</h2>
-            <div>
-            <%= render 'table', session: @session, seance: @seance %>
-            </div>
+        <div class="card-session">
+          <div class="card-session-picture">
+           <%= image_tag "logo-lunettes.png", class: "img-circle" %>
+          </div>
+
+        <div class="card-session-details">
+            <h1>Welcome aboard!</h1>
+              <h2>You are here:</h2>
+              <div>
+              <%= render 'table', session: @session, seance: @seance %>
+              </div>
+        </div>
+        </div>
      </div>
    </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-1">
         <p>Your game will start in:
           <span id="countdown" data-starting-at="<%= @session.starting_at.to_i %>">
             1min30s
