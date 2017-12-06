@@ -7,16 +7,16 @@
      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="card-session">
           <div class="card-session-picture">
-           <%= image_tag "logo-lunettes.png", class: "img-circle" %>
+           <%= image_tag "logo-cinema.png"%>
           </div>
+          <p>WELCOME ABROAD !</p>
 
-        <div class="card-session-details">
-            <h1>Welcome aboard!</h1>
-              <h2>You are here:</h2>
-              <div>
-              <%= render 'table', session: @session, seance: @seance %>
+              <div class="card-session-details">
+                <p>Here You Are :</p>
+                  <div>
+                  <%= render 'table', session: @session, seance: @seance %>
+                  </div>
               </div>
-        </div>
         </div>
      </div>
    </div>
