@@ -10,19 +10,19 @@ const updateCountdown = (startingAt) => {
   seconds  -= mnts*60;
 
   if (diff >= 0) {
-    if (days == 0 && hrs == 0 && mnts == 0) {
-      const label = seconds+" s";
-      countdown.innerText = label;
-    } else if (days == 0 && hrs == 0) {
-      const label = mnts+" min "+seconds+" s";
-      countdown.innerText = label;
-    } else if (days == 0) {
-      const label = hrs+" h "+mnts+" min "+seconds+" s";
-      countdown.innerText = label;
+    let label;
+
+    if (diff < 60) {
+      label = seconds+" s";
+    } else if (diff < 3600) {
+      label = mnts+" min "+seconds+" s";
+    } else if (diff < 86400) {
+      label = hrs+" h "+mnts+" min "+seconds+" s";
     } else {
-      const label = days+" d "+hrs+" h "+mnts+" min "+seconds+" s";
-      countdown.innerText = label;
+      label = days+" d "+hrs+" h "+mnts+" min "+seconds+" s";
     }
+
+    countdown.innerText = label;
   }
 
   if (diff <= 0) {
