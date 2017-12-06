@@ -18,6 +18,14 @@ cinema1 = Cinema.create!(
     { name: 'Multiplexe Le Palace',
      address: 'ZAC des Plaines de Figuerolles, 13500 Martigues'
     })
+cinema2 = Cinema.create!(
+    { name: 'Le Renoir',
+     address: '24 Cours Mirabeu, 13100, Aix en Provence'
+    })
+cinema3 = Cinema.create!(
+    { name: 'Le Prado',
+     address: '36 Avenue du Prado, 13006 Marseille'
+    })
 
 Cinema.all.each do |cinema|
    Seance.create!([
@@ -40,12 +48,29 @@ company1 = Company.create!(
     { name: 'Haribo',
       email: 'contact@haribo.com',
     })
+company2 = Company.create!(
+    { name: 'Gran Frais',
+      email: 'contact@granfrais.com',
+    })
+company3 = Company.create!(
+    { name: 'Starbucks',
+      email: 'contact@starbucks.com',
+    })
 
 #create games
 game1 = Game.create!({
     name: 'Le jeux des ours',
     kind: 'Quizz'
     })
+game2 = Game.create!(
+    { name: 'Cuisinon ensemble',
+      kind: 'Quizz'
+    })
+game3 = Game.create!(
+    { name: 'Le jeux des cafes',
+      kind: 'Quizz'
+    })
+
 Seance.all.each do |seance|
    GameSession.create! ([
      { company: Company.all.sample,
@@ -105,10 +130,4 @@ end
  puts "#{Seance.count} seances created"
  puts "#{Game.count} games created"
  puts "#{Question.count} questions created"
- puts "#{GameSession.count} game sessions created"# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ puts "#{GameSession.count} game sessions created"
