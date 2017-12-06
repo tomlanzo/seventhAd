@@ -10,20 +10,23 @@
         </p>
       </div>
       <div class="col-xs-6 card-session text-center">
-        <p> Il y a</p>
+        <p> Joueurs :<br>
         <span id="countdown">10</span>
-        <p>joueurs</p>
+        </p>
       </div>
     </div>
 
-    <div class="row text-center">
-        <%= image_tag "logo-cinema.png" %>
-      <div class="col-xs-12 card-session">
-        <p class="text-center">TEXTE ICI</p>
+    <div class="row">
+      <div class="col-xs-12 card-session-details text-center">
+          <%= image_tag "logo-cinema.png" %>
+          <p class="text-center">SESSION</p>
       </div>
     </div>
-    <div class="row text-center">
+    <div class="col-xs-12 card-session-tabs text-center">
+
       <%= render 'table', session: @session, seance: @seance %>
+
     </div>
+
   </div>
 </div>
