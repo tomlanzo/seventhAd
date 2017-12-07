@@ -1,14 +1,21 @@
 const players_present = document.getElementById("players_present");
 
 const getPlayersCount = (url) => {
-  fetch(url, {
+  $.ajax({
+    url: url,
     method: "GET",
-    headers: {
-      "X-Requested-With":'XMLHttpRequest',
-      "Accept": "text/javascript",
-      "Content-Type": "text/javascript",
-    },
   });
+
+  // fetch(url, {
+  //   method: "GET",
+  //   headers: {
+  //     "X-Requested-With":'XMLHttpRequest',
+  //     "Accept": "text/javascript",
+  //     "Content-Type": "text/javascript",
+  //   },
+  // }).then((response) => {
+  //   // response is a Response object
+  // });
 };
 
 
@@ -18,7 +25,7 @@ if (players_present !== undefined) {
   // toutes les X secondes, refaire l'appel
   const url = players_present.dataset.playersCountUrl;
 
-  // setInterval(() => {
+  setInterval(() => {
     getPlayersCount(url);
-  // }, 2000);
+  }, 2000);
 }
