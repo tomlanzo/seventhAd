@@ -1,13 +1,13 @@
-<table>
+<table class="table">
   <tr>
-    <td>Cinema:</td>
+    <th>Cinema</th>
     <td><%= seance.cinema.name %></td>
   <tr>
   <tr>
-    <td>Film:</td>
+    <th>Film</th>
     <td><%= seance.movie %></td>
   <tr>
-    <td>Seance:</td>
-    <td><%=  seance.start_at %></td>
+    <th>Seance</th>
+    <td><%= l(seance.start_at, format: :long) %></td>
   </tr>
 </table>

@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Question.destroy_all
+Player.destroy_all
 GameSession.destroy_all
 Seance.destroy_all
 Game.destroy_all
@@ -47,14 +48,17 @@ Cinema.all.each do |cinema|
 company1 = Company.create!(
     { name: 'Haribo',
       email: 'contact@haribo.com',
+      password: 'password'
     })
 company2 = Company.create!(
     { name: 'Gran Frais',
       email: 'contact@granfrais.com',
+      password: 'password'
     })
 company3 = Company.create!(
     { name: 'Starbucks',
       email: 'contact@starbucks.com',
+      password: 'password'
     })
 
 #create games

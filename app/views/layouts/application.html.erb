@@ -9,11 +9,12 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+    <%= render 'shared/navbar' unless @disable_nav_footer %>
     <div class="view">
     <%= yield %>
     </div>
-    <%= render 'shared/footer' %>
+    <%= render 'shared/footer' unless @disable_nav_footer %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
   </body>

@@ -36,4 +36,3 @@ fr:
         one: "Vous êtes le premier joueur !"
         other: "Vous êtes actuellement %{count} joueurs."
 
-  hello: "Hello world"

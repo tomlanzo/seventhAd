@@ -6,7 +6,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.4'
+gem 'rails-i18n'
 gem 'redis'
+gem 'devise'
+gem 'devise-i18n'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -20,6 +23,7 @@ gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
+gem 'email_validator'
 
 group :development, :test do
   gem 'pry-byebug'

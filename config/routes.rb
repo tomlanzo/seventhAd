@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :companies
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -7,6 +8,12 @@ Rails.application.routes.draw do
       get '/players_count', to: 'game_sessions#players_count', as: :players_count
     end
   end
+  resources :players, only: [:show, :edit, :update] do
+    resources :questions, only: :show do
+      resources :answers, only: :create
+    end
+  end
 
   mount Attachinary::Engine => "/attachinary"
+
 end
