@@ -7,7 +7,7 @@ class GameSessionsController < ApplicationController
     @seance = @game_session.seance
 
     check_player_token
-
+    
     @players = @game_session.players
 
     @players_count = @players.count
@@ -15,7 +15,6 @@ class GameSessionsController < ApplicationController
     @players.each(&:calculate_score)
 
     @players_ordered = @players.order(score: :desc, time_taken: :asc)
-
   end
 
   def set_game_session
