@@ -1,4 +1,4 @@
-class Session < ApplicationRecord
+class GameSession < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :players
   belongs_to :company
@@ -7,6 +7,6 @@ class Session < ApplicationRecord
   validates :duration, presence: true, numericality: true
 
   def starting_at
-    seance.start_at + offset.seconds
+    seance.start_at + (offset || 0).seconds
   end
 end

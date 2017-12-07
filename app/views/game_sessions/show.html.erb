@@ -1,10 +1,11 @@
+
 <%= render 'shared/banner' %>
 <div class="header-session">
   <div class="container">
     <div class="row">
       <div class="col-xs-6 card-session text-center">
         <p>Votre jeu commence dans <br>
-          <span id="countdown" data-starting-at="<%= @session.starting_at.to_i %>">
+          <span id="countdown" data-starting-at="<%= @game_session.starting_at.to_i %>">
             20s
           </span>
         </p>
@@ -24,7 +25,7 @@
     </div>
     <div class="col-xs-12 card-session-tabs text-center">
 
-      <%= render 'table', session: @session, seance: @seance %>
+      <%= render 'table', game_session: @game_session, seance: @seance %>
 
     </div>
 
