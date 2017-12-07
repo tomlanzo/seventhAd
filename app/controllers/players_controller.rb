@@ -5,9 +5,9 @@ before_action :set_player, only: [:edit, :update]
 
   def update
     if @player.update(player_params)
-      redirect_to root_path
+      redirect_to root_path          #to be reviewed when the flow is linked
     else
-      render :edit
+      render :edit                   #to be reviewed when the flow is linked
     end
   end
 
