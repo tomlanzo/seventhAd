@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
 before_action :set_player, only: [:edit, :update]
+before_action :disable_nav_footer
 
   def edit; end
 
