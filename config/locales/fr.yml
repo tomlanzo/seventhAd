@@ -30,4 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
-  hello_html: 'Hello <strong>le monde</strong> ! Ceci est un accueil en français'
+  game_sessions:
+    players_present:
+      players_count:
+        one: "Vous êtes le premier joueur !"
+        other: "Vous êtes actuellement %{count} joueurs."
+
