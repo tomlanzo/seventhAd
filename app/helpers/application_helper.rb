@@ -1,3 +1,1 @@
-module ApplicationHelper
 
-end
