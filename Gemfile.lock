@@ -234,10 +234,9 @@ DEPENDENCIES
   bootstrap-sass
   cloudinary (= 1.1.7)
   coffee-rails
-
-  email_validator
   devise
   devise-i18n
+  email_validator
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)
