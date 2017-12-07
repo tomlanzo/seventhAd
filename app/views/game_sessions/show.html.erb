@@ -1,13 +1,33 @@
-<h1>Welcome aboard!</h1>
-<h2>You are here:</h2>
-<div>
-<%= render 'table', session: @game_session, seance: @seance %>
+
+<%= render 'shared/banner' %>
+<div class="header-session">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 card-session text-center">
+        <p>Votre jeu commence dans <br>
+          <span id="countdown" data-starting-at="<%= @game_session.starting_at.to_i %>">
+            20s
+          </span>
+        </p>
+      </div>
+      <div class="col-xs-6 card-session text-center">
+        <p> Joueurs <br>
+        <span id="countdown">10</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-session-details text-center">
+          <%= image_tag "logo-cinema.png" %>
+          <p class="text-center">SESSION</p>
+      </div>
+    </div>
+    <div class="col-xs-12 card-session-tabs text-center">
+
+      <%= render 'table', game_session: @game_session, seance: @seance %>
+
+    </div>
+
+  </div>
 </div>
-<p>Your game will start in:
-  <span id="countdown" data-starting-at="<%= @game_session.starting_at.to_i %>">
-    1min30s
-  </span>
-</p>
-
-<p> You are currently <%= @players_count %> players</p>
-
