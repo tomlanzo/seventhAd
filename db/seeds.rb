@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Question.destroy_all
+Player.destroy_all
 GameSession.destroy_all
 Seance.destroy_all
 Game.destroy_all
