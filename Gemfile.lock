@@ -80,6 +80,8 @@ GEM
       devise (>= 3.1)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    email_validator (1.6.0)
+      activemodel
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -232,6 +234,8 @@ DEPENDENCIES
   bootstrap-sass
   cloudinary (= 1.1.7)
   coffee-rails
+
+  email_validator
   devise
   devise-i18n
   figaro

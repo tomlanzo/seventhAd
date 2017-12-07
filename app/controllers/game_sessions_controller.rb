@@ -5,7 +5,6 @@ class GameSessionsController < ApplicationController
     @seance = @game_session.seance
 
     check_player_token
-
     @players_count = @game_session.players.count
   end
 
