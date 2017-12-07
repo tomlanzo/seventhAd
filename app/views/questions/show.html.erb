@@ -3,20 +3,22 @@
     <div class="col-xs-6">
       <h1>Question <%= @question.position%></h1>
       <h2><%= @question.title %></h2>
-      <%  player_id = params[:player_id] %>
-      <%  question_id = params[:id] %>
-      <%= button_to "A. #{@question.answer_1}",
-        player_question_answers_path(player_id, question_id, choice: 1),
-        class: "btn btn-primary", method: :post %>
-      <%= button_to "B. #{@question.answer_2}",
-        player_question_answers_path(player_id, question_id, choice: 2),
-        class: "btn btn-primary", method: :post %>
-      <%= button_to "C. #{@question.answer_1}",
-        player_question_answers_path(player_id, question_id, choice: 3),
-        class: "btn btn-primary", method: :post %>
-      <%= button_to "D. #{@question.answer_1}",
-        player_question_answers_path(player_id, question_id, choice: 4),
-        class: "btn btn-primary", method: :post %>
+        <%= simple_form_for [@player, @question, @answer] do |f| %>
+          <%= f.input :choice, as: :hidden, input_html: { value: '1' } %>
+          <%= f.submit "A. #{@question.answer_1}", class: "btn btn-primary" %>
+        <% end %>
+        <%= simple_form_for [@player, @question, @answer] do |f| %>
+          <%= f.input :choice, as: :hidden, input_html: { value: '2' } %>
+          <%= f.submit "B. #{@question.answer_2}", class: "btn btn-primary" %>
+        <% end %>
+        <%= simple_form_for [@player, @question, @answer] do |f| %>
+          <%= f.input :choice, as: :hidden, input_html: { value: '3' } %>
+          <%= f.submit "C. #{@question.answer_3}", class: "btn btn-primary" %>
+        <% end %>
+        <%= simple_form_for [@player, @question, @answer] do |f| %>
+          <%= f.input :choice, as: :hidden, input_html: { value: '4' } %>
+          <%= f.submit "D. #{@question.answer_4}", class: "btn btn-primary" %>
+        <% end %>
     </div>
   </div>
 </div>
