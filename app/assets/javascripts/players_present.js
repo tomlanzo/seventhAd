@@ -4,6 +4,7 @@ const getPlayersCount = (url) => {
   fetch(url, {
     method: "GET",
     headers: {
+      "X-Requested-With":'XMLHttpRequest',
       "Accept": "text/javascript",
       "Content-Type": "text/javascript",
     },
