@@ -1,33 +1,5 @@
-
-<%= render 'shared/banner' %>
-<div class="header-session">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6 card-session text-center">
-        <p>Votre jeu commence dans <br>
-          <span id="countdown" data-starting-at="<%= @game_session.starting_at.to_i %>">
-            20s
-          </span>
-        </p>
-      </div>
-      <div class="col-xs-6 card-session text-center">
-        <p> Joueurs <br>
-        <span id="countdown">10</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 card-session-details text-center">
-          <%= image_tag "logo-cinema.png" %>
-          <p class="text-center">SESSION</p>
-      </div>
-    </div>
-    <div class="col-xs-12 card-session-tabs text-center">
-
-      <%= render 'table', game_session: @game_session, seance: @seance %>
-
-    </div>
-
-  </div>
-</div>
+<% if (Time.now > @game_session.ending_at) %> %>
+  <%= render 'landing', game_session: @game_session, seance: @seance %>
+<% else %>
+  <%= render 'ranking', players_ordered: @players_ordered %>
+<% end %>
