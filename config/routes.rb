@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     end
   end
   resources :players, only: [:show, :edit, :update] do
-    resources :questions, only: :show do
+    resources :questions, only: [:show] do
+      get '/countdown', to: 'questions#countdown', as: :countdown
       resources :answers, only: :create
     end
   end
