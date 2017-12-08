@@ -7,15 +7,17 @@ class AnswersController < ApplicationController
     @answer.game_session = @answer.player.game_session
     @answer.correct = @answer.choice == @answer.question.correct_answer
     if @answer.save
-      if @answer.question.position == 3
-       redirect_to edit_player_path(@answer.player)
-      else
-        @next_question = Question.where(game: @answer.question.game,
-                         position: @answer.question.position += 1)
-        redirect_to player_question_path(@answer.player, @next_question.first.id)
-      end
+      flash[:notice] = "Reponse #{@answer.choice} bien enregistrée"
+      # if @answer.question.position == 3
+      #  redirect_to edit_player_path(@answer.player)
+      # else
+      #   @next_question = Question.where(game: @answer.question.game,
+      #                    position: @answer.question.position += 1)
+      #   redirect_to player_question_path(@answer.player, @next_question.first.id)
+      # end
     else
       # render :new
+      flash[:alert] ="La réponse n'a pas été enregistrée, reesayez, svp"
     end
 
   end

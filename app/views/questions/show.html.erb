@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
+      <%= next_question_start_at = Time.now+@question.duration %>
+      <span id="countdown" data-starting-at="<%= next_question_start_at.to_i %>"
+                           data-redirect-path="<%= @redirect_path %>">
+      </span>
+
       <h1>Question <%= @question.position%></h1>
       <h2><%= @question.title %></h2>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
