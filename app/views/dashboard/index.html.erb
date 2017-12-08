@@ -1,0 +1,74 @@
+<h1>Dashboard#index</h1>
+<p>Find me in app/views/dashboard/index.html.erb</p>
+<ul>
+  <% sessions_array = [] %>
+  <% sessions_signed_array = [] %>
+  <% sessions_unsigned_array = [] %>
+
+  <% @game_sessions.each do |game_session| %>
+    <% gamers = game_session.players.count %>
+    <% signed_gamers = 0 %>
+    <% unsigned_gamers = 0 %>
+    <% if game_session.players.any? %>
+
+      <% game_session.players.each do |player| %>
+        <% player.email.nil? ? "" : signed_gamers += 1 %>
+        <li><%= player.name %>  <%= player.email.nil? ? "" : player.email %>  <%= player.game_session_id %> <%= gamers %></li>
+      <% end %>
+
+    <% end %>
+    <% sessions_array.push(game_session) %>
+    <% sessions_signed_array.push(signed_gamers) %>
+    <% sessions_unsigned_array.push(unsigned_gamers) %>
+
+  <% end %>
+</ul>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <canvas id="myChart" width="400" height="400"></canvas>
+      <% content_for(:after_js) do %>
+        <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Players',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+      <% end %>
+    </div>
+  </div>
+</div>
