@@ -2,8 +2,8 @@ class Player < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :game_session
   validates :token, presence: true
-  validates :email, :name, presence: true, if: :persisted?
-  validates :email, email: true
+  validates :email, presence: true, email: true, if: :persisted?
+  validates :name, presence: true, if: :persisted?
 
 
   before_validation(on: :create) do

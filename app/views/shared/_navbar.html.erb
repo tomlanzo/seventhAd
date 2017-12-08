@@ -1,11 +1,35 @@
 <div class="navbar-wagon">
   <!-- Logo -->
- <div class= "navbar-wagon-right">
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-     <%= image_tag "logo.png" %>
+  <div class= "navbar-wagon-right">
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
    <% end %>
- </div>
-
+  </div>
   <!-- Right Navigation -->
-
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <% if company_signed_in? %>
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to edit_company_registration_path, method: :get do %>
+                <i class="fa fa-pencil"></i>  <%= t(".update", default: "Update") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_company_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_company_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+  </div>
 </div>
+
