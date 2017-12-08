@@ -15,3 +15,10 @@ fr:
   simple_form:
     error_notification:
       default_message: "Merci de corriger l'erreur ci-dessous"
+
+  game_sessions:
+    players_present:
+      players_count:
+        one: "Vous êtes le premier joueur !"
+        other: "Vous êtes actuellement %{count} joueurs."
+
