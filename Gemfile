@@ -11,6 +11,7 @@ gem 'redis'
 gem 'devise'
 gem 'devise-i18n'
 
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -26,6 +27,7 @@ gem 'coffee-rails'
 gem 'email_validator'
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
