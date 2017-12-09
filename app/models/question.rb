@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
+
+  include Rails.application.routes.url_helpers
+
   has_many :answers, dependent: :destroy
   belongs_to :game
   validates :position, :duration, presence: true, numericality: true
