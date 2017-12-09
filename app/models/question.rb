@@ -8,4 +8,20 @@ class Question < ApplicationRecord
     message: "%{value} is not a given answer"
   }
   has_attachment :photo
+
+
+  def redirect_path (player)
+    next_question = Question.where(game: self.game,
+                     position: self.position += 1)
+
+    if next_question.empty?
+       edit_player_path(player)
+    else
+       player_question_path(player, next_question.first.id)
+    end
+  end
+
+  def next_start_at (player)
+   player.game_session.starting_at + self.duration
+  end
 end

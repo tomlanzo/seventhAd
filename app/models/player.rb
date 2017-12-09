@@ -9,6 +9,7 @@ class Player < ApplicationRecord
   before_validation(on: :create) do
     self.token = SecureRandom.uuid
   end
+
   def calculate_score
     if !answers.nil? && score.zero?
       answers.each do |answer|

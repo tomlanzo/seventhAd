@@ -6,9 +6,7 @@ class AnswersController < ApplicationController
     @answer.question = Question.find(params[:question_id])
     @answer.game_session = @answer.player.game_session
     @answer.correct = @answer.choice == @answer.question.correct_answer
-    # raise
-      @next_question_start_at = params[:answer][:next_question_start_at]
-      @redirect_path = params[:answer][:redirect_path]
+
     if @answer.save
       render 'questions/countdown'
     else
