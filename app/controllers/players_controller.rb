@@ -7,7 +7,8 @@ before_action :disable_nav_footer
   def update
     if @player.update(player_params)
       redirect_to root_path
-      PlayerMailer.thanks(@player).deliver_now    #to be reviewed when the flow is linked
+      PlayerMailer.thanks(@player).deliver_now
+        #to be reviewed when the flow is linked
 
     else
       render :edit                   #to be reviewed when the flow is linked

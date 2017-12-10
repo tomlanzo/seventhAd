@@ -10,4 +10,9 @@ class PlayerMailer < ApplicationMailer
 
     mail to: @player.email, subject: "Merci #{@player.name}"
   end
+
+  def congrats (player)
+    @player = player
+
+    mail to: @player.email, subject: "Bravo #{@player.name} !"
 end
