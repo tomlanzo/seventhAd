@@ -1,8 +1,7 @@
 class GameSession < ApplicationRecord
 
-  include Rails.application.routes.url_helpers
-
   has_many :answers, dependent: :destroy
+
   has_many :players
   belongs_to :company
   belongs_to :seance
