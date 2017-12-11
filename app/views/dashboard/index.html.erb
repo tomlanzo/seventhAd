@@ -1,74 +1,129 @@
 <h1 class="text-center">Dashboard Client</h1>
-<ul>
-  <% sessions_array = [] %>
-  <% sessions_signed_array = [] %>
-  <% sessions_unsigned_array = [] %>
 
-  <% @game_sessions.each do |game_session| %>
-    <% gamers = game_session.players.count %>
-    <% signed_gamers = 0 %>
-    <% unsigned_gamers = 0 %>
-    <% if game_session.players.any? %>
-
-      <% game_session.players.each do |player| %>
-        <% player.email.nil? ? "" : signed_gamers += 1 %>
-        <li><%= player.name %>  <%= player.email.nil? ? "" : player.email %>  <%= player.game_session_id %> <%= gamers %></li>
-      <% end %>
-
-    <% end %>
-    <% sessions_array.push(game_session) %>
-    <% sessions_signed_array.push(signed_gamers) %>
-    <% sessions_unsigned_array.push(unsigned_gamers) %>
-
-  <% end %>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
+  <li><a data-toggle="tab" href="#sessions">Game Sessions detailed</a></li>
 </ul>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <canvas id="myChart" width="400" height="400"></canvas>
-      <% content_for(:after_js) do %>
-        <script>
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Session 1", "Session 2", "Session 3", "Session 4", "Session 5", "Session 6"],
+<div class="tab-content">
+  <div id="dashboard" class="tab-pane fade in active">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+
+          <canvas id="barChart" width="400" height="400"></canvas>
+          <% content_for(:after_js) do %>
+
+            <script>
+              var canvas = document.getElementById("barChart");
+              var ctx = canvas.getContext('2d');
+
+              // Global Options:
+              Chart.defaults.global.defaultFontColor = 'black';
+              Chart.defaults.global.defaultFontSize = 16;
+
+              var data = {
+                <%# raise %>
+                labels: <%=raw @sessions_names %>,
                 datasets: [{
-                    label: '# of Players',
-                    data: [12, 19, 3, 5, 2, 3],
-                    data: [1, 9, 2, 5, 2, 1],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
+                    label: "# of Signed Players",
+                    backgroundColor: "#37474F",
+                    stack: 1,
+                    data: <%= @sessions_signed_players %>,
+                    fill: true,
+                    lineTension: 0.1,
+                    borderColor: "rgb(167, 105, 0)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "white",
+                    pointBackgroundColor: "black",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 8,
+                    pointHoverBackgroundColor: "brown",
+                    pointHoverBorderColor: "yellow",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHitRadius: 10,
+                    spanGaps: false,
+                  }, {
+                    label: "# of Players",
+                    backgroundColor: "#E67E22",
+                    stack: 1,
+                    data: <%= @sessions_players %>,
+                    fill: false,
+                    lineTension: 0.1,
+                    borderColor: "red", // The main line color
+                    borderCapStyle: 'square',
+                    borderDash: [], // try [5, 15] for instance
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "black",
+                    pointBackgroundColor: "white",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 8,
+                    pointHoverBackgroundColor: "yellow",
+                    pointHoverBorderColor: "brown",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHitRadius: 10,
+                    // notice the gap in the data and the spanGaps: true
+                    spanGaps: true,
+
+                  }
+
+                ]
+              };
+
+              // Notice the scaleLabel at the same level as Ticks
+              var options = {
                 scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        });
-        </script>
-      <% end %>
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true,
+                                  stepSize: 1
+                              },
+                              stacked: true,
+                              scaleLabel: {
+                                   display: true,
+                                   labelString: 'Players',
+                                   fontSize: 20
+                                }
+                          }]
+                      }
+              };
+
+              // Chart declaration:
+              var myBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+              });
+            </script>
+
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div id="sessions" class="tab-pane fade">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-md-3">
+          <div class="message">
+              <div class="message-name">
+                <h3>Game session</h3>
+              </div>
+              <div class="message-body">
+                <%= render 'pie_chart', label: "the label", backgroundColor: "#7686575" %>
+              </div>
+            <div class="message-status">EXPORT</div>
+          </div>
+      </div>
+     </div>
+  </div>
+
+</div>
 </div>
