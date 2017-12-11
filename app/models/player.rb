@@ -7,6 +7,7 @@ class Player < ApplicationRecord
   validates :token, presence: true
   validates :email, presence: true, email: true, if: :persisted?
   validates :name, presence: true, if: :persisted?
+  validates :ranking, numericality: true
 
 
   before_validation(on: :create) do

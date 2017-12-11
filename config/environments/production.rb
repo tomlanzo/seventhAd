@@ -88,4 +88,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_key: ENV['ab827b39-44a1-485b-89f2-37e220483bec'] }
+
+  config.action_mailer.default_url_options = { host: "www.7thad.eu"}
+
 end
