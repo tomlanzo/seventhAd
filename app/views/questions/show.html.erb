@@ -1,22 +1,43 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
+      <span id="countdown" data-starting-at="<%= @next_question_start_at.to_i %>"
+                           data-redirect-path="<%= @redirect_path %>">
+      </span>
+
       <h1>Question <%= @question.position%></h1>
       <h2><%= @question.title %></h2>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
-          <%= f.input :choice, as: :hidden, input_html: { value: '1' } %>
+          <%= f.input :choice, as: :hidden,
+              input_html: { value: '1' } %>
+         <%= f.input :next_question_start_at, as: :hidden,
+              input_html: { value: @next_question_start_at }%>
+          <%= f.input :redirect_path, as: :hidden,
+               input_html: { value: @redirect_path } %>
           <%= f.submit "A. #{@question.answer_1}", class: "btn btn-primary" %>
         <% end %>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '2' } %>
+          <%= f.input :next_question_start_at, as: :hidden,
+              input_html: { value: @next_question_start_at } %>
+          <%= f.input :redirect_path, as: :hidden,
+              input_html: { value: @redirect_path } %>
           <%= f.submit "B. #{@question.answer_2}", class: "btn btn-primary" %>
         <% end %>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '3' } %>
+          <%= f.input :next_question_start_at, as: :hidden,
+               input_html: { value: @next_question_start_at } %>
+          <%= f.input :next_question_start_at, as: :hidden,
+               input_html: { value: @next_question_start_at } %>
           <%= f.submit "C. #{@question.answer_3}", class: "btn btn-primary" %>
         <% end %>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '4' } %>
+          <%= f.input :next_question_start_at, as: :hidden,
+               input_html: { value: @next_question_start_at } %>
+          <%= f.input :next_question_start_at, as: :hidden,
+               input_html: { value: @next_question_start_at } %>
           <%= f.submit "D. #{@question.answer_4}", class: "btn btn-primary" %>
         <% end %>
     </div>

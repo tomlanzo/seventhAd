@@ -1,5 +1,4 @@
 class GameSession < ApplicationRecord
-  has_many :answers, dependent: :destroy
   has_many :players
   belongs_to :company
   belongs_to :seance
