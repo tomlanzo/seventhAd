@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Seance.last.update(start_at: x.seconds.from_now);
+
+
 Question.destroy_all
 Player.destroy_all
 GameSession.destroy_all
@@ -24,7 +27,7 @@ Cinema.all.each do |cinema|
    Seance.create!(
      { cinema: cinema,
        room: "Space de coworking",
-       start_at: "11:21".to_datetime,
+       start_at: "15:59".to_datetime,
        movie: "Demo day batch #89",
      })
   end

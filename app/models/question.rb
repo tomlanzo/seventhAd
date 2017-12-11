@@ -11,7 +11,13 @@ class Question < ApplicationRecord
   has_attachment :photo
 
 
-  def next_start_at (player)
-   player.game_session.starting_at + self.duration
+  def next_start_at(player)
+
+    past_duration = Question.where(game: player.game_session.game,
+                    position: [0..position]).sum(:duration)
+
+    player.game_session.starting_at + past_duration
+
   end
 end
+

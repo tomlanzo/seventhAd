@@ -5,7 +5,6 @@ class AnswersController < ApplicationController
     @answer.player = Player.find(params[:player_id])
     @answer.question = Question.find(params[:question_id])
     @answer.correct = @answer.choice == @answer.question.correct_answer
-
     if @answer.save
       @question = @answer.question
       @player = @answer.player
