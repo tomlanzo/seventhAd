@@ -1,4 +1,3 @@
-<% i = 1 %>
 <table class="table">
   <thead>
     <tr>
@@ -9,11 +8,10 @@
   <tbody>
     <% players_ordered.each do |player| %>
       <tr>
-        <th scope="row"><%= i %></th>
+        <th scope="row"><%= player.ranking %></th>
         <td><%= player.name %></td>
       </tr>
     <tr>
-    <% i+=1 %>
     <% end %>
   </tbody>
 </table>
