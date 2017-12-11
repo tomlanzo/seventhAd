@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20171211120333) do
     t.bigint "game_session_id"
     t.integer "score", default: 0
     t.integer "time_taken", default: 0
+    t.integer "ranking"
     t.index ["game_session_id"], name: "index_players_on_game_session_id"
   end
 
