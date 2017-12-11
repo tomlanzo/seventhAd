@@ -29,7 +29,8 @@ private
       if @player.ranking <= 3
         PlayerMailer.congrats(@player).deliver_now
         # envoie du mail congrats
-      else PlayerMailer.thanks(@player).deliver_now
+      else 
+        PlayerMailer.thanks(@player).deliver_now
         # envoi mail standard
       end
     end
