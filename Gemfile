@@ -10,6 +10,7 @@ gem 'rails-i18n', '5.0.3'
 gem 'redis'
 gem 'devise'
 gem 'devise-i18n'
+gem 'postmark-rails'
 
 
 gem 'autoprefixer-rails'
