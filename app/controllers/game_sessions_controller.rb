@@ -31,8 +31,9 @@ class GameSessionsController < ApplicationController
 
   def check_player_token
     if session[:player_token].nil?
-      player = Player.create!(game_session: @game_session)
-      session[:player_token] = player.token
+      @player = Player.create!(game_session: @game_session)
+      session[:player_token] = @player.token
+      @question = Question.new
     end
   end
 end

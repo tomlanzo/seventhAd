@@ -24,7 +24,7 @@ Cinema.all.each do |cinema|
    Seance.create!(
      { cinema: cinema,
        room: "Space de coworking",
-       start_at: "20:30".to_datetime,
+       start_at: "11:21".to_datetime,
        movie: "Demo day batch #89",
      })
   end
@@ -47,7 +47,8 @@ Seance.all.each do |seance|
      { company: Company.all.sample,
        game: game1,
        seance: seance,
-       duration: 60
+       duration: 60,
+       offset: 60,
      })
 end
 

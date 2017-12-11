@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-xs-6 card-session text-center">
 
-       <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
-                           data-redirect-path="<%= @question.redirect_path(@player) %>">
-       </span>
+        <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
+                             data-next-page-path="<%= @player.next_page_path(@question) %>">
+        </span>
 
        <% if @answer.correct %>
          <h1>Bravo! Bon réponse!</h1>

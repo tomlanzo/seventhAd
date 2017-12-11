@@ -3,7 +3,7 @@
     <div class="col-xs-6">
 
       <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
-                           data-redirect-path="<%= @question.redirect_path(@player) %>">
+                           data-next-page-path="<%= @player.next_page_path(@question) %>">
       </span>
 
       <h1>Question <%= @question.position%></h1>

@@ -44,8 +44,8 @@
       if (status.shouldStop) {
         console.log('Seance started, stop countdown');
         clearInterval(updateCountdownId);
-        const redirectPath = (countdown.dataset.redirectPath);
-        window.location.replace(redirectPath);
+        const nextPagePath = (countdown.dataset.nextPagePath);
+        window.location.replace(nextPagePath);
         // redirect(redirectPath);
       }
     }, 1000);

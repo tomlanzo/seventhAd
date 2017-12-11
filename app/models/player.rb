@@ -22,4 +22,21 @@ class Player < ApplicationRecord
       save(validate: false)
     end
   end
+
+  def next_page_path(question)
+
+    if question.id.nil?
+      next_question = Question.find(game: question.game, position: 1)
+    else
+      next_question = Question.where(game: question.game,
+                      position: question.position += 1)
+    end
+
+    if next_question.empty?
+       edit_player_path(question)
+    else
+       player_question_path(next_question.first.id)
+    end
+  end
+
 end

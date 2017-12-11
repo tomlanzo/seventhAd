@@ -1,7 +1,5 @@
 class Question < ApplicationRecord
 
-  include Rails.application.routes.url_helpers
-
   has_many :answers, dependent: :destroy
   belongs_to :game
   validates :position, :duration, presence: true, numericality: true
@@ -12,22 +10,6 @@ class Question < ApplicationRecord
   }
   has_attachment :photo
 
-
-  def redirect_path (player)
-    if self.position
-      next_question = Question.where(game: self.game,
-                     position: self.position += 1)
-    else
-      next_question = Question.where(game: self.game,
-                     position: self.position = 1)
-    end
-
-    if next_question.empty?
-       edit_player_path(player)
-    else
-       player_question_path(player, next_question.first.id)
-    end
-  end
 
   def next_start_at (player)
    player.game_session.starting_at + self.duration
