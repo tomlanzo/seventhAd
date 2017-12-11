@@ -16,115 +16,71 @@ Cinema.destroy_all
 
 #create cinemas
 cinema1 = Cinema.create!(
-    { name: 'Multiplexe Le Palace',
-     address: 'ZAC des Plaines de Figuerolles, 13500 Martigues'
-    })
-cinema2 = Cinema.create!(
-    { name: 'Le Renoir',
-     address: '24 Cours Mirabeu, 13100, Aix en Provence'
-    })
-cinema3 = Cinema.create!(
-    { name: 'Le Prado',
-     address: '36 Avenue du Prado, 13006 Marseille'
+    { name: 'Le Wagon',
+     address: '167 Rue Paradis, 13006 Marseille '
     })
 
 Cinema.all.each do |cinema|
-   Seance.create!([
+   Seance.create!(
      { cinema: cinema,
-       room: "Le mistral",
+       room: "Space de coworking",
        start_at: "20:30".to_datetime,
-       movie: "12 jours",
-     },
-     { cinema: cinema,
-       room: "Les calanques",
-       start_at: "19:30".to_datetime,
-       movie: "Coco",
-     },
-    ])
+       movie: "Demo day batch #89",
+     })
   end
 
 #create companies
 
 company1 = Company.create!(
-    { name: 'Haribo',
-      email: 'contact@haribo.com',
+    { name: 'Le Wagon',
+      email: 'contact@lewagon.com',
       password: 'password'
     })
-company2 = Company.create!(
-    { name: 'Gran Frais',
-      email: 'contact@granfrais.com',
-      password: 'password'
-    })
-company3 = Company.create!(
-    { name: 'Starbucks',
-      email: 'contact@starbucks.com',
-      password: 'password'
-    })
-
 #create games
 game1 = Game.create!({
-    name: 'Le jeux des ours',
+    name: 'Connaisez vous Le Wagon? ',
     kind: 'Quizz'
-    })
-game2 = Game.create!(
-    { name: 'Cuisinon ensemble',
-      kind: 'Quizz'
-    })
-game3 = Game.create!(
-    { name: 'Le jeux des cafes',
-      kind: 'Quizz'
     })
 
 Seance.all.each do |seance|
-   GameSession.create! ([
+   GameSession.create! (
      { company: Company.all.sample,
        game: game1,
        seance: seance,
        duration: 60
-     },
-     { company: Company.all.sample,
-       game: game1,
-       seance: seance,
-       duration: 60
-     },
-     { company: Company.all.sample,
-       game: game1,
-       seance: seance,
-       duration: 60
-     },
-  ])
+     })
 end
 
 #create questions
  questions = Question.create!([
     { game: game1,
       position: '1',
-      title: "What is the shape of haribo's most famous candy?",
-      answer_1: 'Dog',
-      answer_2: 'Bear',
-      answer_3: 'Elephant',
-      answer_4: 'Rainbow',
+      title: "Quelle est la couleur principale du logo 'Le Wagon'?",
+      answer_1: 'A. Jaune, comme le soleil',
+      answer_2: 'B. Rouge, comme le coeur',
+      answer_3: "C. Vert, comme l'espoir",
+      answer_4: "D. Les couleurs de l'arc en ciel",
       correct_answer: 2,
       duration: 15,
     },
     { game: game1,
       position: '2',
-      title: 'How many gummy bear flavors exist?',
-      answer_1: '17',
-      answer_2: '3',
-      answer_3: '5',
-      answer_4: '4',
+      title: 'Depuis quand Le Wagon est à Marseille?',
+      answer_1: 'A. Bah, ça fais que 3 mois',
+      answer_2: 'B. Depuis 1999',
+      answer_3: 'C. Je dirais 2015',
+      answer_4: 'D. Avant hier',
       correct_answer: 3,
       duration: 15,
     },
     { game: game1,
       position: '3',
-      title: 'Which of the following is NOT a haribo bear flavor?',
-      answer_1: 'Orange',
-      answer_2: 'Strawberry',
-      answer_3: 'Raspberry',
-      answer_4: 'Coke',
-      correct_answer: 4,
+      title: 'Combien ça dure la formation au Wagon?',
+      answer_1: 'A. 9 semaines!',
+      answer_2: 'B. 5 mois',
+      answer_3: 'C. Trois ans et demi',
+      answer_4: 'D. Sais pas, 2 jours?',
+      correct_answer: 1,
       duration: 15,
     },
   ])

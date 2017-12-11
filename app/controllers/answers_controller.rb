@@ -8,6 +8,8 @@ class AnswersController < ApplicationController
     @answer.correct = @answer.choice == @answer.question.correct_answer
 
     if @answer.save
+      @question = @answer.question
+      @player = @answer.player
       render 'questions/countdown'
     else
       flash[:alert] ="La réponse n'a pas été enregistrée, reesayez, svp"

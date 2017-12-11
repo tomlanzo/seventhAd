@@ -14,8 +14,13 @@ class Question < ApplicationRecord
 
 
   def redirect_path (player)
-    next_question = Question.where(game: self.game,
+    if self.position
+      next_question = Question.where(game: self.game,
                      position: self.position += 1)
+    else
+      next_question = Question.where(game: self.game,
+                     position: self.position = 1)
+    end
 
     if next_question.empty?
        edit_player_path(player)
