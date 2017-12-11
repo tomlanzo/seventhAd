@@ -1,5 +1,4 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1 class="text-center">Dashboard Client</h1>
 <ul>
   <% sessions_array = [] %>
   <% sessions_signed_array = [] %>
@@ -34,10 +33,11 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                labels: ["Session 1", "Session 2", "Session 3", "Session 4", "Session 5", "Session 6"],
                 datasets: [{
                     label: '# of Players',
                     data: [12, 19, 3, 5, 2, 3],
+                    data: [1, 9, 2, 5, 2, 1],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
