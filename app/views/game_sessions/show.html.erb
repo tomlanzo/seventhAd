@@ -1,5 +1,6 @@
-<% if (Time.now > @game_session.ending_at) %> %>
+<% if (Time.now > @game_session.ending_at) %>
   <%= render 'landing', game_session: @game_session, seance: @seance %>
 <% else %>
   <%= render 'ranking', players_ordered: @players_ordered %>
 <% end %>
+

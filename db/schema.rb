@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211112725) do
+ActiveRecord::Schema.define(version: 20171211120333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 20171211112725) do
     t.boolean "correct", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "game_session_id"
     t.bigint "player_id"
     t.bigint "question_id"
-    t.index ["game_session_id"], name: "index_answers_on_game_session_id"
     t.index ["player_id"], name: "index_answers_on_player_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
@@ -129,7 +127,6 @@ ActiveRecord::Schema.define(version: 20171211112725) do
     t.index ["cinema_id"], name: "index_seances_on_cinema_id"
   end
 
-  add_foreign_key "answers", "game_sessions"
   add_foreign_key "answers", "players"
   add_foreign_key "answers", "questions"
   add_foreign_key "game_sessions", "companies"
