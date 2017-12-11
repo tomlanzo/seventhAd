@@ -12,7 +12,6 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'postmark-rails'
 
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
