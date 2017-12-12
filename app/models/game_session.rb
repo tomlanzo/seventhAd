@@ -8,10 +8,10 @@ class GameSession < ApplicationRecord
 
 
   def update_session_start_end
-    if !self.starting_at
+    if !starting_at
       self.starting_at = start_at
       self.ending_at = end_at
-      self.update
+      update
     end
   end
 
@@ -31,8 +31,7 @@ class GameSession < ApplicationRecord
   end
 
   def end_at
-    # seance.starting_at + (offset_end || 0).seconds + (duration || 0).seconds
-    starting_at + caltulate_duration + (self.offset_end || 0).seconds
+     starting_at + caltulate_duration + (offset_end || 0).seconds
   end
 
 end
