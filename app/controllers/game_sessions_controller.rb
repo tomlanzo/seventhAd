@@ -32,13 +32,10 @@ class GameSessionsController < ApplicationController
 
   def check_player_token
     @player = Player.find_by_token(session[:player_token]) if session[:player_token]
-
     if @player.nil?
       @player = Player.create!(game_session: @game_session)
       session[:player_token] = @player.token
     end
-
-    # binding.pry
   end
 
   def calculate_ranking(players)
