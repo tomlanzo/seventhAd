@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211120333) do
+ActiveRecord::Schema.define(version: 20171212134304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20171211120333) do
     t.datetime "opened_at"
     t.bigint "seance_id"
     t.integer "offset"
+    t.integer "status"
     t.index ["company_id"], name: "index_game_sessions_on_company_id"
     t.index ["game_id"], name: "index_game_sessions_on_game_id"
     t.index ["seance_id"], name: "index_game_sessions_on_seance_id"

@@ -4,8 +4,22 @@ class GameSession < ApplicationRecord
   belongs_to :company
   belongs_to :seance
   belongs_to :game
+  enum status: [ :pending, :active, :finished ]
   validates :duration, presence: true, numericality: true
 
+  # Pending : DateTime.now < session.starting_at
+  # Active : session.starting_at < DateTime.now < session.ending_at
+  # Finished :  DateTime.now > session.ending_at
+
+  def update_status
+    if DateTime.now <= self.starting_at
+      self.pending!
+    elsif DateTime.now > self.starting_at && DateTime.now <= self.ending_at
+      self.active!
+    else
+      self.finished!
+    end
+  end
 
   def starting_at
     seance.start_at + (offset || 0).seconds
