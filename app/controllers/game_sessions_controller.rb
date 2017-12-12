@@ -1,5 +1,5 @@
 class GameSessionsController < ApplicationController
-  before_action :set_game_session, only: [:show, :check_player_token, :players_count]
+  before_action :set_game_session, only: [:show, :check_player_token, :players_count, :players_ordered]
   before_action :disable_nav_footer
 
   def show
@@ -14,14 +14,20 @@ class GameSessionsController < ApplicationController
 
     @players.each(&:calculate_score)
 
+    @game_session.calculate_ranking
+
+    @players_ordered = @game_session.players.order(ranking: :asc)
+
     @question = Question.new
-
-    @players_ordered = calculate_ranking(@players)
-
   end
 
   def players_count
     @players_count = @game_session.players.count
+  end
+
+  def players_ordered
+    @game_session.calculate_ranking
+    @players_ordered = @game_session.players.order(ranking: :asc)
   end
 
   private
@@ -36,16 +42,5 @@ class GameSessionsController < ApplicationController
       @player = Player.create!(game_session: @game_session)
       session[:player_token] = @player.token
     end
-  end
-
-  def calculate_ranking(players)
-    players_ordered = players.order(score: :desc, time_taken: :asc)
-    i = 1
-    players_ordered.each do |player|
-      player.ranking = i
-      i += 1
-      player.save(validate: false)
-    end
-    players_ordered
   end
 end

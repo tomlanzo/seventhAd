@@ -1,6 +1,6 @@
-const players_present = document.getElementById("players_present");
+const ranking = document.getElementById("ranking");
 
-const getPlayersCount = (url) => {
+const getPlayersOrdered = (url) => {
   $.ajax({
     url: url,
     method: "GET",
@@ -18,14 +18,13 @@ const getPlayersCount = (url) => {
   // });
 };
 
-
-if (players_present) {
+if (ranking) {
   // recuperer l'url qui devra être interrogée
   // faire l'appel AJAX sur cette url
   // toutes les X secondes, refaire l'appel
-  const url = players_present.dataset.playersCountUrl;
+  const url = ranking.dataset.playersOrderedUrl;
 
   setInterval(() => {
-    getPlayersCount(url);
+    getPlayersOrdered(url);
   }, 2000);
 }
