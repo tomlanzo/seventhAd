@@ -5,36 +5,23 @@ class GameSession < ApplicationRecord
   belongs_to :seance
   belongs_to :game
   enum status: [ :pending, :active, :finished ]
-  validates :duration, presence: true, numericality: true
-
-  # Pending : DateTime.now < session.starting_at
-  # Active : session.starting_at < DateTime.now < session.ending_at
-  # Finished :  DateTime.now > session.ending_at
 
   def update_status
-    if DateTime.now <= self.starting_at
+    if DateTime.now <= starting_at
       self.pending!
-    elsif DateTime.now > self.starting_at && DateTime.now <= self.ending_at
+    elsif DateTime.now > starting_at && DateTime.now <= ending_at
       self.active!
     else
       self.finished!
     end
   end
 
-  def starting_at
-    seance.start_at + (offset || 0).seconds
-  end
 
-  def calculate_duration
-    if !game.questions.nil?
-      game.questions.each do |question|
-        self.duration += question.duration
-      end
+  def update_session_start_end
+    if !starting_at
+      self.update(starting_at: start_at, ending_at: end_at,
+                  duration: calculate_duration)
     end
-  end
-
-  def ending_at
-    seance.start_at + (offset || 0).seconds + (duration || 0).seconds
   end
 
   def calculate_ranking
@@ -46,5 +33,26 @@ class GameSession < ApplicationRecord
       player.save(validate: false)
     end
   end
+
+  private
+
+  def start_at
+    seance.start_at + (offset_start || 0).seconds
+  end
+
+  def calculate_duration
+    if !game.questions.nil?
+      duration = 0
+      game.questions.each do |question|
+        duration += question.duration
+      end
+      duration + offset_end
+    end
+  end
+
+  def end_at
+     start_at + calculate_duration + (offset_end || 0).seconds
+  end
+
 
 end
