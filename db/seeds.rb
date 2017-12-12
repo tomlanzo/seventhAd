@@ -50,7 +50,6 @@ Seance.all.each do |seance|
      { company: Company.all.sample,
        game: game1,
        seance: seance,
-       duration: 60,
        offset_start: 10,
        offset_end: 45,
      })
