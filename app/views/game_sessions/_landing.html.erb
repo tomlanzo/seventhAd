@@ -1,12 +1,12 @@
 
 <div class="banner-gs">
+  <div class="banner-logo"><%= image_tag("moving-wagon.png", class:"wagon") %></div>
 
   <div class="container">
     <div class="row">
-         <%= image_tag("moving-wagon.png", class:"wagon") %>
-         <p>LE QUIZZ WAGON</p>
+         <p class="main-title">LE QUIZZ WAGON</p>
     </div>
-        <p>Votre Jeu Commence Dans <br>
+        <p class="subtitle">Votre Jeu Commence Dans</p>
 
 
           <div class="box-counter-container">
@@ -44,10 +44,11 @@
 
 
 
-        <p> Nombre de Joueurs <br>
+        <div class="user-count">
+          <p class="subtitle">Nombre de Joueurs</p>
 
-        <span id="players_present" data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></span>
-        </p>
+          <div id="players_present" class="player-count"  data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></div>
+        </div>
 
 
 

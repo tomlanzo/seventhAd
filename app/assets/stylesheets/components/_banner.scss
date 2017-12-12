@@ -33,11 +33,71 @@
   height: 100vh;
   background-size: cover !important;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  display: flex;
-  opacity: 1,2;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // opacity: 1,2;
+  // align-items: center;
+  // justify-content: center;
+
+  .banner-logo {
+
+    img {
+      width: 80px;
+    }
+  }
+  .main-title {
+      color: $my-gray;
+      font-size: 70px;
+      line-height: 1;
+      margin: 0 0 40px 0;
+      transform: rotate(-2deg);
+      text-shadow:     0 1px 0 hsl(174,5%,80%),
+                       0 2px 0 hsl(174,5%,75%),
+                       0 3px 0 hsl(174,5%,70%),
+                       0 4px 0 hsl(174,5%,66%),
+                       0 5px 0 hsl(174,5%,64%),
+                       0 6px 0 hsl(174,5%,62%),
+                       0 7px 0 hsl(174,5%,61%),
+                       0 8px 0 hsl(174,5%,60%),
+
+                       0 0 5px rgba(0,0,0,.05),
+                      0 1px 3px rgba(0,0,0,.2),
+                      0 3px 5px rgba(0,0,0,.2),
+                     0 5px 10px rgba(0,0,0,.2),
+                    0 10px 10px rgba(0,0,0,.2),
+                    0 20px 20px rgba(0,0,0,.3);
+  }
+
+  .subtitle {
+    text-transform: uppercase;
+    font-size: 30px;
+    color: $my-gray;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .user-count {
+    margin-top: 30px;
+    color: white;
+    font-weight: lighter;
+
+    .player-count {
+      padding: 10px;
+      font-size: 50px;
+      background:$my-gray;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
 }
+
+
 
 .banner-gs p {
   font-size: 25px;
@@ -46,11 +106,6 @@
   margin-bottom: 30px;
 }
 
-.wagon {
-  margin-top: 20px;
-  margin-bottom: 50px;
-  height: 100px;
-}
 
 
 
