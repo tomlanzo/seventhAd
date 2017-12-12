@@ -5,5 +5,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require Chart.min
-
 //= require_tree .
