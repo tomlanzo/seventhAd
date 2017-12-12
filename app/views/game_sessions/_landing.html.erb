@@ -1,27 +1,78 @@
-<div class="banner-gs" style="background: url( <%= image_path "lewagon.png" %>) center;">
 
-</div>
-<div class="header-session">
+<div class="banner-gs">
+
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 card-session text-center">
+         <%= image_tag("moving-wagon.png", class:"wagon") %>
+         <p>LE QUIZZ WAGON</p>
+    </div>
         <p>Votre Jeu Commence Dans <br>
-          <span id="countdown" class="red" data-starting-at="<%= game_session.starting_at.to_i %>"
-                        data-next-page-path="<%= @player.next_page_path(@question) %>">
-          </span>
+
+          <div class="box-counter-container">
+              <div class="box-counter one-sixtieth-secondéééé">
+              <ul class="ten">
+                <li>5</li>
+                <li>4</li>
+                <li>3</li>
+                <li>2</li>
+                <li>1</li>
+                <li>0</li>
+              </ul>
+              <ul class="unit">
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+              </ul>
+                <label>1/60 of a sec</label>
+            </div>
+              <span id="countdown" class="red" data-starting-at="<%= game_session.starting_at.to_i %>"
+                    data-next-page-path="<%= @player.next_page_path(@question) %>">
+              </span>
+              <div class="box-counter one-sixtieth-second">
+              <ul class="ten">
+                <li>5</li>
+                <li>4</li>
+                <li>3</li>
+                <li>2</li>
+                <li>1</li>
+                <li>0</li>
+              </ul>
+              <ul class="unit">
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+              </ul>
+                <label>1/60 of a sec</label>
+            </div>
+
+          </div>
+
+
         </p>
-      </div>
-      <div class="col-xs-6 card-session text-center">
         <p> Nombre de Joueurs <br>
         <span id="players_present" data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></span>
         </p>
-      </div>
-    </div>
     <div class="row">
 
     </div>
     <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 card-session-tabs text-center">
       <%= render 'table', game_session: game_session, seance: seance %>
     </div>
-  </div>
+
+</div>
+
 </div>

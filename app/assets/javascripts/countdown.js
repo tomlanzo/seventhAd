@@ -15,14 +15,14 @@
       if (diff < 60) {
         label = seconds+" s";
       } else if (diff < 3600) {
-        label = mnts+" min "+seconds+" s";
+        label = "<div class='box-counter-container'><div class='box-counter'><div class='unit_2'>" + mnts+"</div> <label>min</label> </div><div class='box-counter'><div class='unit_2'>"+seconds+"</div><label>s</label>" + "</div></div>";
       } else if (diff < 86400) {
         label = hrs+" h "+mnts+" min "+seconds+" s";
       } else {
         label = days+" d "+hrs+" h "+mnts+" min "+seconds+" s";
       }
 
-      countdown.innerText = label;
+      countdown.innerHTML = label;
     }
 
     if (diff <= 0) {

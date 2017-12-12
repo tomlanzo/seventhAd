@@ -28,22 +28,29 @@
 }
 
 .banner-gs {
-color: white;
+  color: #333;
   text-align: center;
-  height: 40vh;
+  height: 100vh;
+  background-size: cover !important;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   display: flex;
+  opacity: 1,2;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
 }
 
 .banner-gs p {
   font-size: 25px;
-  font-weight: lighter;
-  color: rgb(255, 255, 255);
-  opacity: 0.6;
+  font-weight: bolder;
+  // color: white;
   margin-bottom: 30px;
 }
+
+.wagon {
+  height: 150px;
+}
+
+
+
 
 
