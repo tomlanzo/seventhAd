@@ -19,6 +19,6 @@ fr:
   game_sessions:
     players_present:
       players_count:
-        one: "Vous êtes le premier joueur !"
-        other: "Vous êtes actuellement %{count} joueurs."
+        one: "1"
+        other: "%{count}"
 

@@ -1,27 +1,26 @@
-<%= render 'shared/banner' %>
+<div class="banner-gs" style="background: url( <%= image_path "lewagon.png" %>) center;">
+
+</div>
 <div class="header-session">
   <div class="container">
     <div class="row">
       <div class="col-xs-6 card-session text-center">
-        <p>Votre jeu commence dans <br>
-          <span id="countdown" data-starting-at="<%= game_session.starting_at.to_i %>"
+        <p>Votre Jeu Commence Dans <br>
+          <span id="countdown" class="red" data-starting-at="<%= game_session.starting_at.to_i %>"
                         data-next-page-path="<%= @player.next_page_path(@question) %>">
           </span>
         </p>
       </div>
       <div class="col-xs-6 card-session text-center">
-        <p> Joueurs <br>
+        <p> Nombre de Joueurs <br>
         <span id="players_present" data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></span>
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 card-session-details text-center">
-          <%= image_tag "logo-cinema.png" %>
-          <p class="text-center">SESSION</p>
-      </div>
+
     </div>
-    <div class="col-xs-12 card-session-tabs text-center">
+    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 card-session-tabs text-center">
       <%= render 'table', game_session: game_session, seance: seance %>
     </div>
   </div>
