@@ -7,9 +7,7 @@
     var ctx = document.getElementById("pieChart<%= game_session_id %>").getContext('2d');
 
       var data = {
-              <%# raise %>
         labels:  ["Joueurs inconnus", "Joueurs inscrits"],
-              // data: <%= @sessions_signed_players %>,
         datasets: [{
           backgroundColor: ["#37474F", "#E67E22"],
           data: <%= @stats %>,
