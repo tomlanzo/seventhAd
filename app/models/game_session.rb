@@ -7,8 +7,19 @@ class GameSession < ApplicationRecord
   validates :duration, presence: true, numericality: true
 
 
-  def starting_at
-    seance.start_at + (offset || 0).seconds
+  def update_session_start_end
+    if !self.starting_at
+      self.starting_at = start_at
+      self.ending_at = end_at
+      self.update
+    end
+  end
+
+
+  private
+
+  def start_at
+    seance.start_at + (offset_start || 0).seconds
   end
 
   def calculate_duration
@@ -19,8 +30,9 @@ class GameSession < ApplicationRecord
     end
   end
 
-  def ending_at
-    seance.start_at + (offset || 0).seconds + (duration || 0).seconds
+  def end_at
+    # seance.starting_at + (offset_end || 0).seconds + (duration || 0).seconds
+    starting_at + caltulate_duration + (self.offset_end || 0).seconds
   end
 
 end

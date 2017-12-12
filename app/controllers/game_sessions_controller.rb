@@ -3,7 +3,8 @@ class GameSessionsController < ApplicationController
   before_action :disable_nav_footer
 
   def show
-    @game_session.calculate_duration
+
+    @game_session.update_session_start_end
 
     @seance = @game_session.seance
 
