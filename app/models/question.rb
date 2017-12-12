@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
+
   has_many :answers, dependent: :destroy
   belongs_to :game
   validates :position, :duration, presence: true, numericality: true
@@ -8,4 +9,15 @@ class Question < ApplicationRecord
     message: "%{value} is not a given answer"
   }
   has_attachment :photo
+
+
+  def next_start_at(player)
+
+    past_duration = Question.where(game: player.game_session.game,
+                    position: [0..position]).sum(:duration)
+
+    player.game_session.starting_at + past_duration
+
+  end
 end
+

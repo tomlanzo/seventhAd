@@ -14,7 +14,10 @@ class GameSessionsController < ApplicationController
 
     @players.each(&:calculate_score)
 
+    @question = Question.new
+
     @players_ordered = calculate_ranking(@players)
+
   end
 
   def players_count
@@ -28,9 +31,10 @@ class GameSessionsController < ApplicationController
   end
 
   def check_player_token
-    if session[:player_token].nil?
-      player = Player.create!(game_session: @game_session)
-      session[:player_token] = player.token
+    @player = Player.find_by_token(session[:player_token]) if session[:player_token]
+    if @player.nil?
+      @player = Player.create!(game_session: @game_session)
+      session[:player_token] = @player.token
     end
   end
 

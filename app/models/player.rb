@@ -1,4 +1,7 @@
 class Player < ApplicationRecord
+
+  include Rails.application.routes.url_helpers
+
   has_many :answers, dependent: :destroy
   belongs_to :game_session
   validates :token, presence: true
@@ -10,6 +13,7 @@ class Player < ApplicationRecord
   before_validation(on: :create) do
     self.token = SecureRandom.uuid
   end
+
   def calculate_score
     if !answers.nil? && score.zero?
       answers.each do |answer|
@@ -22,4 +26,21 @@ class Player < ApplicationRecord
       save(validate: false)
     end
   end
+
+  def next_page_path(question)
+
+    if question.id.nil?
+      next_question = Question.where(game: self.game_session.game.id, position: 1)
+    else
+      next_question = Question.where(game: question.game,
+                      position: question.position += 1)
+    end
+
+    if next_question.empty?
+       edit_player_path(self.id)
+    else
+       player_question_path(self.id, next_question.first.id)
+    end
+  end
+
 end

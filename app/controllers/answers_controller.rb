@@ -5,10 +5,9 @@ class AnswersController < ApplicationController
     @answer.player = Player.find(params[:player_id])
     @answer.question = Question.find(params[:question_id])
     @answer.correct = @answer.choice == @answer.question.correct_answer
-    # raise
-      @next_question_start_at = params[:answer][:next_question_start_at]
-      @redirect_path = params[:answer][:redirect_path]
     if @answer.save
+      @question = @answer.question
+      @player = @answer.player
       render 'questions/countdown'
     else
       flash[:alert] ="La réponse n'a pas été enregistrée, reesayez, svp"

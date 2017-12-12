@@ -1,9 +1,11 @@
 class GameSession < ApplicationRecord
+
   has_many :players
   belongs_to :company
   belongs_to :seance
   belongs_to :game
   validates :duration, presence: true, numericality: true
+
 
   def starting_at
     seance.start_at + (offset || 0).seconds
@@ -20,4 +22,5 @@ class GameSession < ApplicationRecord
   def ending_at
     seance.start_at + (offset || 0).seconds + (duration || 0).seconds
   end
+
 end
