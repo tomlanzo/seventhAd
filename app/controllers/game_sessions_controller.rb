@@ -4,8 +4,6 @@ class GameSessionsController < ApplicationController
 
   def show
 
-    @game_session.update_session_start_end
-
     @seance = @game_session.seance
 
     check_player_token
