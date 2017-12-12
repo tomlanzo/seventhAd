@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171212134156) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 20171212134156) do
     t.integer "offset_start"
     t.integer "offset_end"
     t.datetime "ending_at"
+    t.integer "status"
     t.index ["company_id"], name: "index_game_sessions_on_company_id"
     t.index ["game_id"], name: "index_game_sessions_on_game_id"
     t.index ["seance_id"], name: "index_game_sessions_on_seance_id"
