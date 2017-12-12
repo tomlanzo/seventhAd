@@ -34,4 +34,14 @@ class GameSession < ApplicationRecord
      starting_at + caltulate_duration + (offset_end || 0).seconds
   end
 
+  def calculate_ranking
+    players_ordered = self.players.order(score: :desc, time_taken: :asc)
+    i = 1
+    players_ordered.each do |player|
+      player.ranking = i
+      i += 1
+      player.save(validate: false)
+    end
+  end
+
 end

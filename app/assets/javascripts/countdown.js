@@ -35,7 +35,7 @@
 
   const countdown = document.getElementById("countdown");
 
-  if (countdown !== undefined) {
+  if (countdown) {
     const startingAt = parseInt(countdown.dataset.startingAt);
 
     const updateCountdownId = setInterval(() => {
