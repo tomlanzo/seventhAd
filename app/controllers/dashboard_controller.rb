@@ -14,7 +14,10 @@ class DashboardController < ApplicationController
           player.email.nil? ? "" : signed_players += 1
         end
       end
-      @sessions_names.push(game_session.seance.movie)
+      # a = [game_session.id.to_s, game_session.seance.cinema.name, game_session.seance.movie].join("\n")
+      # puts a
+# game_session.seance.movie
+      @sessions_names.push(game_session.id)
       @sessions_players.push(game_session.players.count-signed_players)
       @sessions_signed_players.push(signed_players)
     end

@@ -1,8 +1,8 @@
-<h1 class="text-center">Dashboard Client</h1>
+<h1 class="text-center">Tableau de bord <strong><%= current_company.name %></strong></h1>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
-  <li><a data-toggle="tab" href="#sessions">Game Sessions detailed</a></li>
+  <li class="active"><a data-toggle="tab" href="#dashboard">Résumé</a></li>
+  <li><a data-toggle="tab" href="#sessions">Détail des Sessions</a></li>
 </ul>
 
 <div class="tab-content">
@@ -13,94 +13,7 @@
 
           <canvas id="barChart" width="400" height="400"></canvas>
           <% content_for(:after_js) do %>
-
-            <script>
-              var canvas = document.getElementById("barChart");
-              var ctx = canvas.getContext('2d');
-
-              // Global Options:
-              Chart.defaults.global.defaultFontColor = 'black';
-              Chart.defaults.global.defaultFontSize = 16;
-
-              var data = {
-                <%# raise %>
-                labels: <%=raw @sessions_names %>,
-                datasets: [{
-                    label: "# of Signed Players",
-                    backgroundColor: "#37474F",
-                    stack: 1,
-                    data: <%= @sessions_signed_players %>,
-                    fill: true,
-                    lineTension: 0.1,
-                    borderColor: "rgb(167, 105, 0)",
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: "white",
-                    pointBackgroundColor: "black",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 8,
-                    pointHoverBackgroundColor: "brown",
-                    pointHoverBorderColor: "yellow",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 4,
-                    pointHitRadius: 10,
-                    spanGaps: false,
-                  }, {
-                    label: "# of Players",
-                    backgroundColor: "#E67E22",
-                    stack: 1,
-                    data: <%= @sessions_players %>,
-                    fill: false,
-                    lineTension: 0.1,
-                    borderColor: "red", // The main line color
-                    borderCapStyle: 'square',
-                    borderDash: [], // try [5, 15] for instance
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: "black",
-                    pointBackgroundColor: "white",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 8,
-                    pointHoverBackgroundColor: "yellow",
-                    pointHoverBorderColor: "brown",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 4,
-                    pointHitRadius: 10,
-                    // notice the gap in the data and the spanGaps: true
-                    spanGaps: true,
-
-                  }
-
-                ]
-              };
-
-              // Notice the scaleLabel at the same level as Ticks
-              var options = {
-                scales: {
-                          yAxes: [{
-                              ticks: {
-                                  beginAtZero:true,
-                                  stepSize: 1
-                              },
-                              stacked: true,
-                              scaleLabel: {
-                                   display: true,
-                                   labelString: 'Players',
-                                   fontSize: 20
-                                }
-                          }]
-                      }
-              };
-
-              // Chart declaration:
-              var myBarChart = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: options
-              });
-            </script>
+            <%= render 'bar_chart' %>
 
           <% end %>
         </div>
@@ -110,20 +23,39 @@
 
   <div id="sessions" class="tab-pane fade">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-4 col-md-3">
-          <div class="message">
-              <div class="message-name">
-                <h3>Game session</h3>
-              </div>
-              <div class="message-body">
-                <%= render 'pie_chart', label: "the label", backgroundColor: "#7686575" %>
-              </div>
-            <div class="message-status">EXPORT</div>
-          </div>
-      </div>
-     </div>
-  </div>
 
-</div>
+      <% @game_sessions.each_with_index do |game_session, i| %>
+        <% if game_session.players.any? %>
+          <% @stats = [] %>
+          <% @stats.push(@sessions_players[i]) %>
+          <% @stats.push(@sessions_signed_players[i]) %>
+
+          <div class="game-session-detail">
+            <div class="row message">
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="message-name">
+                  <h3>Session <%= game_session.id %></h3>
+                  <p><%= l(game_session.seance.start_at) %></p>
+                  <p>Cinéma : <%= game_session.seance.cinema.name %></p>
+                  <p>Film : <%= game_session.seance.movie %></p>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="message-body">
+                  <%= render 'pie_chart', game_session_id: game_session.id %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="message-status">
+                  <p>Télécharger</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
 </div>
