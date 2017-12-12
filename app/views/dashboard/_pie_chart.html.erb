@@ -12,14 +12,14 @@
               // data: <%= @sessions_signed_players %>,
         datasets: [{
           backgroundColor: ["#37474F", "#E67E22"],
-          data: <%= @stats %>,
+          data: <%= [unsigned_players, signed_players] %>,
           }]
         };
 
         var options = {
           title: {
           display: true,
-          text: 'Résultat :  <%= (@stats[0]+@stats[1]) %> joueurs, <%= number_to_percentage(100*(@stats[1]/(@stats[0]+@stats[1]).to_f), precision: 0) %> de conversion'
+          text: 'Résultat :  <%= (unsigned_players+signed_players) %> joueurs, <%= number_to_percentage(100*(signed_players/(unsigned_players+signed_players).to_f), precision: 0) %> de conversion'
         }
       };
     // Chart declaration:
