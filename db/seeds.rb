@@ -8,7 +8,7 @@
 
 # Seance.last.update(start_at: x.seconds.from_now);
 
-
+Answer.destroy_all
 Question.destroy_all
 Player.destroy_all
 GameSession.destroy_all
@@ -17,20 +17,52 @@ Game.destroy_all
 Company.destroy_all
 Cinema.destroy_all
 
+ puts "#{Cinema.count} cinemas"
+ puts "#{Company.count} companies"
+ puts "#{Seance.count} seances"
+ puts "#{Game.count} games"
+ puts "#{Question.count} questions"
+ puts "#{GameSession.count} game sessions"
+ puts "#{Player.count} players"
+
+
+
+
 #create cinemas
 cinema1 = Cinema.create!(
-    { name: 'Le Wagon',
-     address: '167 Rue Paradis, 13006 Marseille '
+    { name: 'Le Prado',
+     address: '36 Avenue du Prado, 13006 Marseille'
+    })
+cinema2 = Cinema.create!(
+    { name: 'Les Variétés',
+     address: '37 rue Vincent-Scotto, 13001 Marseille'
     })
 
-Cinema.all.each do |cinema|
-   Seance.create!(
-     { cinema: cinema,
-       room: "Space de coworking",
-       start_at: "15:59".to_datetime,
-       movie: "Demo day batch #89",
+ seance11 =  Seance.create!(
+     { cinema: cinema1,
+       room: "Salle 12",
+       start_at: "10/12/2017 19:15".to_datetime.in_time_zone,
+       movie: "La Villa",
+     }),
+
+ seance12 =  Seance.create!(
+     { cinema: cinema1,
+       room: "Salle 7",
+       start_at: "09/12/2017 16:30".to_datetime.in_time_zone,
+       movie: "Stars 80 : la suite",
+     }),
+ seance21 =  Seance.create!(
+     { cinema: cinema2,
+       room: "Salle 3",
+       start_at: "08/12/2017 18:15".to_datetime.in_time_zone,
+       movie: "Bienvenue à Suburbicon",
      })
-  end
+ seance22 =  Seance.create!(
+     { cinema: cinema2,
+       room: "Salle 6",
+       start_at: "06/12/2017 21:45".to_datetime.in_time_zone,
+       movie: "Les Bienheureux",
+     })
 
 #create companies
 
@@ -46,13 +78,30 @@ game1 = Game.create!({
     })
 
 Seance.all.each do |seance|
-   GameSession.create! (
-     { company: Company.all.sample,
+# create seance
+   g = GameSession.create! (
+     { company: company1,
        game: game1,
        seance: seance,
        offset_start: 10,
        offset_end: 45,
      })
+# create players no email
+   rand(100).times do
+     Player.create! ( {
+        game_session: g,
+        token: rand(200000000000000),
+      })
+   end
+ #create players with email
+   rand(100).times do
+     Player.create! ( {
+        game_session: g,
+        token: rand(200000000000000),
+        name:Faker::Name.first_name,
+        email: Faker::Internet.email,
+      })
+   end
 end
 
 #create questions
@@ -89,9 +138,45 @@ end
     },
   ])
 
+# Le Wagon - Game Session pour tests et gamesession pour DD, no players, no answers
+cinema3 = Cinema.create!(
+    { name: 'Le Wagon',
+     address: '167 Rue Paradis, 13006 Marseille'
+    })
+
+ seance31 =  Seance.create!(
+     { cinema: cinema3,
+       room: "Space de coworking",
+       start_at: "13/12/2017 15:59".to_datetime,
+       movie: "Test session",
+     })
+ seance32 =  Seance.create!(
+     { cinema: cinema3,
+       room: "Space de coworking",
+       start_at: "15/12/2017 18:30".to_datetime,
+       movie: "Demo day batch #89",
+     })
+
+   GameSession.create! (
+     { company: Company.all.sample,
+       game: game1,
+       seance: seance31,
+       offset_start: 10,
+       offset_end: 45,
+     })
+
+   GameSession.create! (
+     { company: Company.all.sample,
+       game: game1,
+       seance: seance32,
+       offset_start: 10,
+       offset_end: 45,
+     })
+
  puts "#{Cinema.count} cinemas created"
  puts "#{Company.count} companies created"
  puts "#{Seance.count} seances created"
  puts "#{Game.count} games created"
  puts "#{Question.count} questions created"
  puts "#{GameSession.count} game sessions created"
+ puts "#{Player.count} players created"
