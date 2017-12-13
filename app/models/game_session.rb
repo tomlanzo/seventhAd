@@ -11,18 +11,20 @@ class GameSession < ApplicationRecord
     closed: 3,
   }
   after_create :enqueue_job_opener
-  before_validation(on: :create) do
-    self.initialize_timestamps
-  end
+  before_save :initialize_gs
 
   def enqueue_job_opener
-    self.initialize_timestamps
-    ActivateGameSessionJob.perform_at(starting_at, id)
+    ActivateGameSessionJob.set(wait_until: starting_at).perform_later(id)
   end
 
-  def initialize_timestamps
-    self.calculate_duration
-    self.update(starting_at: start_at, ending_at: end_at)
+  def initialize_gs
+    self.starting_at = start_at
+    self.ending_at = end_at
+    self.duration = duration
+
+    if starting_at.future?
+      self.status = :pending
+    end
   end
 
   def calculate_ranking
@@ -35,16 +37,27 @@ class GameSession < ApplicationRecord
     end
   end
 
-  private
+  def calculate_winners
+    self.players.update(winner: false)
+    winners = self.players.where.not(email: nil).order(ranking: :asc).first(3)
+    winners.each do |player|
+      player.winner = true
+      player.save
+    end
+  end
 
-  def calculate_duration
+
+  # private
+
+  def duration
     if !game.questions.nil?
       duration = 0
       game.questions.each do |question|
         duration += question.duration
       end
     end
-    self.update(duration: duration)
+
+    duration
   end
 
   def start_at

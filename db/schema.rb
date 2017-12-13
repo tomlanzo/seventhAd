@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212164445) do
+ActiveRecord::Schema.define(version: 20171213160040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20171212164445) do
     t.integer "score", default: 0
     t.integer "time_taken", default: 0
     t.integer "ranking"
+    t.boolean "winner", default: false
     t.index ["game_session_id"], name: "index_players_on_game_session_id"
   end
 

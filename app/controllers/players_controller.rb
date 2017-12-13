@@ -7,11 +7,22 @@ before_action :disable_nav_footer
   def update
      if @player.update(player_params)
       redirect_to game_session_path(@player.game_session)
-      send_player_email
+      # send_player_email
      else
       render :edit
     end
   end
+
+  # def send_player_email
+  #   # redirect + mailer
+  #    if @player.ranking <= 3
+  #      PlayerMailer.congrats(@player).deliver_now
+  #      # envoie du mail congrats
+  #    else
+  #      PlayerMailer.thanks(@player).deliver_now
+  #      # envoi mail standard
+  #    end
+  #  end
 
 private
 
@@ -22,16 +33,5 @@ private
    def player_params
     params.require(:player).permit(:name, :email)
    end
-
-   def send_player_email
-     # redirect + mailer
-      if @player.ranking <= 3
-        PlayerMailer.congrats(@player).deliver_now
-        # envoie du mail congrats
-      else
-        PlayerMailer.thanks(@player).deliver_now
-        # envoi mail standard
-      end
-    end
 end
 
