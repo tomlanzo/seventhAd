@@ -8,7 +8,7 @@
 
 # Seance.last.update(start_at: x.seconds.from_now);
 
-
+Answer.destroy_all
 Question.destroy_all
 Player.destroy_all
 GameSession.destroy_all
@@ -19,18 +19,55 @@ Cinema.destroy_all
 
 #create cinemas
 cinema1 = Cinema.create!(
+    { name: 'Le Prado',
+     address: '36 Avenue du Prado, 13006 Marseille'
+    })
+cinema2 = Cinema.create!(
+    { name: 'Les Variétés',
+     address: '37 rue Vincent-Scotto, 13001 Marseille'
+    })
+cinema3 = Cinema.create!(
     { name: 'Le Wagon',
-     address: '167 Rue Paradis, 13006 Marseille '
+     address: '167 Rue Paradis, 13006 Marseille'
     })
 
-Cinema.all.each do |cinema|
-   Seance.create!(
-     { cinema: cinema,
+ seance11 =  Seance.create!(
+     { cinema: cinema1,
+       room: "Salle 12",
+       start_at: "10/12/2017 19:15".to_datetime.in_time_zone,
+       movie: "La Villa",
+     }),
+
+ seance12 =  Seance.create!(
+     { cinema: cinema1,
+       room: "Salle 7",
+       start_at: "09/12/2017 16:30".to_datetime.in_time_zone,
+       movie: "Stars 80 : la suite",
+     }),
+ seance21 =  Seance.create!(
+     { cinema: cinema2,
+       room: "Salle 3",
+       start_at: "08/12/2017 18:15".to_datetime.in_time_zone,
+       movie: "Bienvenue à Suburbicon",
+     })
+ seance22 =  Seance.create!(
+     { cinema: cinema2,
+       room: "Salle 6",
+       start_at: "06/12/2017 21:45".to_datetime.in_time_zone,
+       movie: "Les Bienheureux",
+     })
+ seance31 =  Seance.create!(
+     { cinema: cinema3,
        room: "Space de coworking",
-       start_at: "15:59".to_datetime,
+       start_at: "13/12/2017 15:59".to_datetime,
+       movie: "Test session",
+     })
+ seance32 =  Seance.create!(
+     { cinema: cinema3,
+       room: "Space de coworking",
+       start_at: "15/12/2017 18:30".to_datetime,
        movie: "Demo day batch #89",
      })
-  end
 
 #create companies
 
