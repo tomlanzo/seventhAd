@@ -5,8 +5,6 @@
          <%= image_tag("moving-wagon.png", class:"wagon") %>
     </div>
   <div class="row">
-
-
       <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
                            data-next-page-path="<%= @player.next_page_path(@question) %>">
       </span>

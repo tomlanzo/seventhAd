@@ -18,7 +18,7 @@ class Player < ApplicationRecord
     if !answers.nil? && score.zero?
       answers.each do |answer|
         if answer.correct
-          self.time_taken += answer.created_at.to_i
+          self.time_taken += (answer.created_at.to_i - game_session.starting_at.to_i)
           self.score += 1
         end
       end
@@ -30,16 +30,16 @@ class Player < ApplicationRecord
   def next_page_path(question)
 
     if question.id.nil?
-      next_question = Question.where(game: self.game_session.game.id, position: 1)
+      next_question = Question.where(game: game_session.game.id, position: 1)
     else
       next_question = Question.where(game: question.game,
                       position: question.position += 1)
     end
 
     if next_question.empty?
-       edit_player_path(self.id)
+       edit_player_path(id)
     else
-       player_question_path(self.id, next_question.first.id)
+       player_question_path(id, next_question.first.id)
     end
   end
 

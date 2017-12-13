@@ -3,16 +3,18 @@
     <div class="row">
       <div class="col-xs-6 card-session text-center">
 
-        <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
-                             data-next-page-path="<%= @player.next_page_path(@question) %>">
-        </span>
 
        <% if @answer.correct %>
+        <%= image_tag("happy.gif") %>
          <h1>Bravo! Bon réponse!</h1>
        <% else %>
+         <%= image_tag("sadness.gif") %>
          <h1>Dommage, mauvaise réponse...</h1>
        <% end %>
        <h2>Prochaine question dans</h2>
+        <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
+                             data-next-page-path="<%= @player.next_page_path(@question) %>">
+        </span>
 
       </div>
     </div>
