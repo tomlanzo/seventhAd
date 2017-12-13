@@ -6,10 +6,12 @@
    <% end %>
   </div>
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-wagon-right">
     <% if company_signed_in? %>
       <!-- Avatar with dropdown menu -->
+        <%= link_to "Dashboard", dashboard_path %>
       <div class="navbar-wagon-item">
+
         <div class="dropdown">
          <% if current_company.photo? %>
             <%= cl_image_tag current_company.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
