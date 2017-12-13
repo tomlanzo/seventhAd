@@ -10,6 +10,7 @@ gem 'rails-i18n', '5.0.3'
 gem 'redis'
 gem 'devise'
 gem 'devise-i18n'
+gem 'postmark-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -27,6 +28,7 @@ gem 'email_validator'
 gem 'chart-js-rails'
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'

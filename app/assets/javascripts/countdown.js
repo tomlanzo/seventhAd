@@ -35,7 +35,7 @@
 
   const countdown = document.getElementById("countdown");
 
-  if (countdown !== undefined) {
+  if (countdown) {
     const startingAt = parseInt(countdown.dataset.startingAt);
 
     const updateCountdownId = setInterval(() => {
@@ -44,6 +44,9 @@
       if (status.shouldStop) {
         console.log('Seance started, stop countdown');
         clearInterval(updateCountdownId);
+        const nextPagePath = (countdown.dataset.nextPagePath);
+        window.location.replace(nextPagePath);
+        // redirect(redirectPath);
       }
     }, 1000);
   }
