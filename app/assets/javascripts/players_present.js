@@ -1,6 +1,6 @@
-const players_present = document.getElementById("players_present");
+var players_present = document.getElementById("players_present");
 
-const getPlayersCount = (url) => {
+var getPlayersCount = function(url) {
   $.ajax({
     url: url,
     method: "GET",
@@ -23,9 +23,9 @@ if (players_present) {
   // recuperer l'url qui devra être interrogée
   // faire l'appel AJAX sur cette url
   // toutes les X secondes, refaire l'appel
-  const url = players_present.dataset.playersCountUrl;
+  var url = players_present.dataset.playersCountUrl;
 
-  setInterval(() => {
+  setInterval(function() {
     getPlayersCount(url);
   }, 2000);
 }
