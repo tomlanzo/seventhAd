@@ -27,8 +27,8 @@ gem 'email_validator'
 gem 'chart-js-rails'
 
 group :development, :test do
-#  gem 'pry-byebug'
-#  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

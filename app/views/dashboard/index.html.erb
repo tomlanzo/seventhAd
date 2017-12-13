@@ -1,27 +1,26 @@
 <div class="container">
 
-<h1 class="text-center mb">Tableau de bord <strong><%= current_company.name %></strong></h1>
+  <h1 class="text-center mb">Tableau de bord <strong><%= current_company.name %></strong></h1>
 
-<ul class="nav nav-tabs mb+">
-  <li class="active"><a data-toggle="tab" href="#dashboard">Résumé</a></li>
-  <li><a data-toggle="tab" href="#sessions">Détail des Sessions</a></li>
-</ul>
+  <ul class="nav nav-tabs mb+">
+    <li class="active"><a data-toggle="tab" href="#dashboard">Toutes les sessions</a></li>
+    <li><a data-toggle="tab" href="#sessions">Détails par session</a></li>
+  </ul>
 
-<div class="tab-content">
-  <div id="dashboard" class="tab-pane fade in active">
+  <div class="tab-content">
+    <div id="dashboard" class="tab-pane fade in active">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
 
           <canvas id="barChart" width="400" height="400"></canvas>
           <% content_for(:after_js) do %>
             <%= render 'bar_chart' %>
-
           <% end %>
         </div>
       </div>
-  </div>
+    </div>
 
-  <div id="sessions" class="tab-pane fade">
+    <div id="sessions" class="tab-pane fade">
       <div class="row">
         <div class="col-md-9 col-md-offset-2">
 
@@ -50,10 +49,8 @@
                 </div>
               <% end %>
             <% end %>
-
         </div>
       </div>
-
+    </div>
   </div>
-</div>
 </div>

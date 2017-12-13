@@ -7,7 +7,6 @@
   Chart.defaults.global.defaultFontSize = 16;
 
   var data = {
-    <%# raise %>
     labels: <%=raw @sessions_names %>,
     datasets: [{
         label: "# de joueurs inscrits",
@@ -71,7 +70,7 @@
                   stacked: true,
                   scaleLabel: {
                        display: true,
-                       labelString: 'Players',
+                       labelString: 'Joueurs',
                        fontSize: 20
                     }
               }]
