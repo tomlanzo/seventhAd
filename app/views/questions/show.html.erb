@@ -1,29 +1,70 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-      <h1>Question <%= @question.position%></h1>
-      <h2><%= @question.title %></h2>
+
+<div class="banner-gs">
+    <div class="banner-logo"><%= image_tag("moving-wagon.png", class:"wagon") %>
+    </div>
+
+
+  <div class="container">
+
+    <div class="row">
+
+      <p class="main-title">Question <%= @question.position%></p>
+   </div>
+
+      <div class="box-counter-container">
+
+        <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>" data-next-page-path="<%= @player.next_page_path(@question) %>">
+        </span>
+             <div class="box-counter hours">
+
+              <div class="box-counter one-sixtieth-second">
+                <ul class="ten">
+                  <li>5</li>
+                  <li>4</li>
+                  <li>3</li>
+                  <li>2</li>
+                  <li>1</li>
+                  <li>0</li>
+                </ul>
+                <ul class="unit">
+                  <li>9</li>
+                  <li>8</li>
+                  <li>7</li>
+                  <li>6</li>
+                  <li>5</li>
+                  <li>4</li>
+                  <li>3</li>
+                  <li>2</li>
+                  <li>1</li>
+                  <li>0</li>
+                </ul>
+                <label>ms</label>
+            </div>
+          </div>
+        </div>
+
+      <p class="subtitle"><%= @question.title %></p>
+      <div class="padded2">
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden,
               input_html: { value: '1' } %>
-          <%= f.submit "#{@question.answer_1}", class: "btn btn-primary" %>
+          <%= f.submit "#{@question.answer_1}", class: "col-xs-offset-1 col-xs-4 col-xs-offset-1  btn btn-lg btn-danger" %>
         <% end %>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '2' } %>
-          <%= f.submit "#{@question.answer_2}", class: "btn btn-primary" %>
+          <%= f.submit "#{@question.answer_2}", class: "col-xs-offset-1 col-xs-4 col-xs-offset-1  btn btn-lg btn-danger" %>
         <% end %>
+        </div>
+        <div class="padded2">
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '3' } %>
-          <%= f.submit "#{@question.answer_3}", class: "btn btn-primary" %>
+          <%= f.submit "#{@question.answer_3}", class: "col-xs-offset-1 col-xs-4 col-xs-offset-1  btn btn-lg btn-danger" %>
         <% end %>
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '4' } %>
-          <%= f.submit "#{@question.answer_4}", class: "btn btn-primary" %>
+          <%= f.submit "#{@question.answer_4}", class: "col-xs-offset-1 col-xs-4 col-xs-offset-1  btn btn-lg btn-danger" %>
         <% end %>
-
-      <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
-                           data-next-page-path="<%= @player.next_page_path(@question) %>">
-      </span>
+        </div>
     </div>
   </div>
 </div>
