@@ -25,6 +25,9 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'email_validator'
+gem 'faker'
+gem 'chart-js-rails'
+
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'

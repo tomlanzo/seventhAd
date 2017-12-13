@@ -10,6 +10,6 @@ class FinishGameSessionJob < ApplicationJob
       .set(wait_until: game_session.ending_at)
       .perform_later(game_session_id)
 
-    Rails.logger.debug "GS-DEBUG Job finish: id=#{game_session_id} status is now #{game_session.status}!"
+    # Rails.logger.debug "GS-DEBUG Job finish: id=#{game_session_id} status is now #{game_session.status}!"
   end
 end

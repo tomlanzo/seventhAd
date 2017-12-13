@@ -4,7 +4,7 @@ class CloseGameSessionJob < ApplicationJob
   def perform(game_session_id)
     game_session = GameSession.find(game_session_id)
     game_session.closed!
-    Rails.logger.debug "GS-DEBUG Job close: id=#{game_session_id} status is now #{game_session.status}!"
+    # Rails.logger.debug "GS-DEBUG Job close: id=#{game_session_id} status is now #{game_session.status}!"
     game_session.calculate_winners
 
     game_session.reload

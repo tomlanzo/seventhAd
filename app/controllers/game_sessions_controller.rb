@@ -14,7 +14,7 @@ class GameSessionsController < ApplicationController
     @winners = @players_ordered.where(winner: true)
     @question = Question.new
 
-    Rails.logger.debug "GS-DEBUG id=#{@game_session.id} status is now #{@game_session.status}!"
+    # Rails.logger.debug "GS-DEBUG id=#{@game_session.id} status is now #{@game_session.status}!"
   end
 
   def players_count
@@ -24,6 +24,7 @@ class GameSessionsController < ApplicationController
   def players_ordered
     @game_session.calculate_ranking
     @players_ordered = @game_session.players.order(ranking: :asc)
+    @winners = @players_ordered.where(winner: true)
   end
 
   private

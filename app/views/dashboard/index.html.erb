@@ -1,0 +1,56 @@
+<div class="container">
+
+  <h1 class="text-center mb">Tableau de bord <strong><%= current_company.name %></strong></h1>
+
+  <ul class="nav nav-tabs mb+">
+    <li class="active"><a data-toggle="tab" href="#dashboard">Toutes les sessions</a></li>
+    <li><a data-toggle="tab" href="#sessions">Détails par session</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="dashboard" class="tab-pane fade in active">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+
+          <canvas id="barChart" width="400" height="400"></canvas>
+          <% content_for(:after_js) do %>
+            <%= render 'bar_chart', sessions_names: @sessions_names, sessions_signed_players: @sessions_signed_players, sessions_unsigned_players: @sessions_unsigned_players %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="sessions" class="tab-pane fade">
+      <div class="row">
+        <div class="col-md-9 col-md-offset-2">
+
+            <% @game_sessions.each do |game_session| %>
+              <% if game_session.players.any? %>
+
+                <div class="game-session-detail well">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <h3 class="mt0">Session <%= game_session.id %></h3>
+                        <p><%= l(game_session.seance.start_at, format: :long) %></p>
+                        <p>Cinéma : <%= game_session.seance.cinema.name %></p>
+                        <p>Film : <%= game_session.seance.movie %></p>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= render 'pie_chart', game_session_id: game_session.id, unsigned_players: game_session.count_unsigned_players, signed_players: game_session.count_signed_players %>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                      <div class="text-center">
+                        <a href="#" class="btn btn-primary">Télécharger</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
