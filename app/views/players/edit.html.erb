@@ -1,6 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+
+<div class="banner-gs">
+  <div class="banner-logo"><%= image_tag("moving-wagon.png", class:"wagon") %></div>
+
+  <div class="container">
+    <div class="row">
+         <p class="information">Pour avoir une chance de gagner, finalisez votre inscription.</p>
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
       <%= render "form", player: @player %>
     </div>
   </div>
