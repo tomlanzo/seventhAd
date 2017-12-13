@@ -54,7 +54,7 @@ class GameSession < ApplicationRecord
       game.questions.each do |question|
         duration += question.duration
       end
-      duration + (offset_end || 0).seconds
+      duration
     end
   end
 
