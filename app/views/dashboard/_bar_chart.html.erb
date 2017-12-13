@@ -7,12 +7,12 @@
   Chart.defaults.global.defaultFontSize = 16;
 
   var data = {
-    labels: <%=raw @sessions_names %>,
+    labels: <%=raw sessions_names %>,
     datasets: [{
         label: "# de joueurs inscrits",
         backgroundColor: "#E67E22",
         stack: 1,
-        data: <%= @sessions_signed_players %>,
+        data: <%= sessions_signed_players %>,
         fill: true,
         lineTension: 0.1,
         borderColor: "rgb(167, 105, 0)",
@@ -34,7 +34,7 @@
         label: "# de joueurs inconnus",
         backgroundColor: "#37474F",
         stack: 1,
-        data: <%= @sessions_players %>,
+        data: <%= sessions_unsigned_players %>,
         fill: false,
         lineTension: 0.1,
         borderColor: "red", // The main line color

@@ -34,6 +34,14 @@ class GameSession < ApplicationRecord
     end
   end
 
+  def count_unsigned_players
+    self.players.where(email: nil).count
+  end
+
+  def count_signed_players
+    self.players.where.not(email: nil).count
+  end
+
   private
 
   def start_at
@@ -54,12 +62,5 @@ class GameSession < ApplicationRecord
      start_at + calculate_duration + (offset_end || 0).seconds
   end
 
-  def count_unsigned_players
-    self.players.where(email: nil).count
-  end
-
-  def count_signed_players
-    self.players.where.not(email: nil).count
-  end
 
 end

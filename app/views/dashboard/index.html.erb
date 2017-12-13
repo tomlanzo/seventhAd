@@ -14,7 +14,7 @@
 
           <canvas id="barChart" width="400" height="400"></canvas>
           <% content_for(:after_js) do %>
-            <%= render 'bar_chart' %>
+            <%= render 'bar_chart', sessions_names: @sessions_names, sessions_signed_players: @sessions_signed_players, sessions_unsigned_players: @sessions_unsigned_players %>
           <% end %>
         </div>
       </div>
