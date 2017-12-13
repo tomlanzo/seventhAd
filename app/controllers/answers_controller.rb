@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+before_action :disable_nav_footer
   def create
     @answer = Answer.new(answer_params)
     @answer.player = Player.find(params[:player_id])
