@@ -8,7 +8,7 @@ before_action :disable_nav_footer
     if @answer.save
       @question = @answer.question
       @player = @answer.player
-      render 'questions/countdown'
+      render 'questions/answer'
     else
       flash[:alert] ="La réponse n'a pas été enregistrée, reesayez, svp"
     end
