@@ -17,6 +17,17 @@ Game.destroy_all
 Company.destroy_all
 Cinema.destroy_all
 
+ puts "#{Cinema.count} cinemas"
+ puts "#{Company.count} companies"
+ puts "#{Seance.count} seances"
+ puts "#{Game.count} games"
+ puts "#{Question.count} questions"
+ puts "#{GameSession.count} game sessions"
+ puts "#{Player.count} players"
+
+
+
+
 #create cinemas
 cinema1 = Cinema.create!(
     { name: 'Le Prado',
@@ -25,10 +36,6 @@ cinema1 = Cinema.create!(
 cinema2 = Cinema.create!(
     { name: 'Les Variétés',
      address: '37 rue Vincent-Scotto, 13001 Marseille'
-    })
-cinema3 = Cinema.create!(
-    { name: 'Le Wagon',
-     address: '167 Rue Paradis, 13006 Marseille'
     })
 
  seance11 =  Seance.create!(
@@ -56,18 +63,6 @@ cinema3 = Cinema.create!(
        start_at: "06/12/2017 21:45".to_datetime.in_time_zone,
        movie: "Les Bienheureux",
      })
- seance31 =  Seance.create!(
-     { cinema: cinema3,
-       room: "Space de coworking",
-       start_at: "13/12/2017 15:59".to_datetime,
-       movie: "Test session",
-     })
- seance32 =  Seance.create!(
-     { cinema: cinema3,
-       room: "Space de coworking",
-       start_at: "15/12/2017 18:30".to_datetime,
-       movie: "Demo day batch #89",
-     })
 
 #create companies
 
@@ -83,13 +78,30 @@ game1 = Game.create!({
     })
 
 Seance.all.each do |seance|
-   GameSession.create! (
-     { company: Company.all.sample,
+# create seance
+   g = GameSession.create! (
+     { company: company1,
        game: game1,
        seance: seance,
        offset_start: 10,
        offset_end: 45,
      })
+# create players no email
+   rand(100).times do
+     Player.create! ( {
+        game_session: g,
+        token: rand(200000000000000),
+      })
+   end
+ #create players with email
+   rand(100).times do
+     Player.create! ( {
+        game_session: g,
+        token: rand(200000000000000),
+        name:Faker::Name.first_name,
+        email: Faker::Internet.email,
+      })
+   end
 end
 
 #create questions
@@ -126,9 +138,45 @@ end
     },
   ])
 
+# Le Wagon - Game Session pour tests et gamesession pour DD, no players, no answers
+cinema3 = Cinema.create!(
+    { name: 'Le Wagon',
+     address: '167 Rue Paradis, 13006 Marseille'
+    })
+
+ seance31 =  Seance.create!(
+     { cinema: cinema3,
+       room: "Space de coworking",
+       start_at: "13/12/2017 15:59".to_datetime,
+       movie: "Test session",
+     })
+ seance32 =  Seance.create!(
+     { cinema: cinema3,
+       room: "Space de coworking",
+       start_at: "15/12/2017 18:30".to_datetime,
+       movie: "Demo day batch #89",
+     })
+
+   GameSession.create! (
+     { company: Company.all.sample,
+       game: game1,
+       seance: seance31,
+       offset_start: 10,
+       offset_end: 45,
+     })
+
+   GameSession.create! (
+     { company: Company.all.sample,
+       game: game1,
+       seance: seance32,
+       offset_start: 10,
+       offset_end: 45,
+     })
+
  puts "#{Cinema.count} cinemas created"
  puts "#{Company.count} companies created"
  puts "#{Seance.count} seances created"
  puts "#{Game.count} games created"
  puts "#{Question.count} questions created"
  puts "#{GameSession.count} game sessions created"
+ puts "#{Player.count} players created"
