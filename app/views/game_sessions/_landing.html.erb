@@ -1,28 +1,57 @@
-<%= render 'shared/banner' %>
-<div class="header-session">
+
+<div class="banner-gs">
+  <div class="banner-logo"><%= image_tag("moving-wagon.png", class:"wagon") %></div>
+
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 card-session text-center">
-        <p>Votre jeu commence dans <br>
-          <span id="countdown" data-starting-at="<%= game_session.starting_at.to_i %>"
-                        data-next-page-path="<%= @player.next_page_path(@question) %>">
+         <p class="main-title">LE QUIZZ WAGON</p>
+    </div>
+        <p class="subtitle">Votre Jeu Commence Dans</p>
+
+
+          <div class="box-counter-container">
+            <span id="countdown" class="red" data-starting-at="<%= game_session.starting_at.to_i %>"
+                data-next-page-path="<%= @player.next_page_path(@question) %>">
           </span>
-        </p>
-      </div>
-      <div class="col-xs-6 card-session text-center">
-        <p> Joueurs <br>
-        <span id="players_present" data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></span>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 card-session-details text-center">
-          <%= image_tag "logo-cinema.png" %>
-          <p class="text-center">SESSION</p>
-      </div>
-    </div>
-    <div class="col-xs-12 card-session-tabs text-center">
-      <%= render 'table', game_session: game_session, seance: seance %>
-    </div>
-  </div>
+
+            <div class="box-counter hours">
+
+              <div class="box-counter one-sixtieth-second">
+                <ul class="ten">
+                  <li>5</li>
+                  <li>4</li>
+                  <li>3</li>
+                  <li>2</li>
+                  <li>1</li>
+                  <li>0</li>
+                </ul>
+                <ul class="unit">
+                  <li>9</li>
+                  <li>8</li>
+                  <li>7</li>
+                  <li>6</li>
+                  <li>5</li>
+                  <li>4</li>
+                  <li>3</li>
+                  <li>2</li>
+                  <li>1</li>
+                  <li>0</li>
+                </ul>
+                <label>ms</label>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="user-count">
+          <p class="subtitle">Nombre de Joueurs</p>
+
+          <div id="players_present" class="player-count"  data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></div>
+        </div>
+
+
+
+</div>
+
 </div>
