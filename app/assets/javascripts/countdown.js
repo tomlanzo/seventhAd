@@ -13,7 +13,7 @@
       let label;
 
       if (diff < 60) {
-        label = seconds+" s";
+        label = "<div class='box-counter-container'><div class='box-counter'><div class='unit_2'>"+ seconds+"</div><label>s</label>" + "</div></div>";
       } else if (diff < 3600) {
         label = "<div class='box-counter-container'><div class='box-counter'><div class='unit_2'>" + mnts+"</div> <label>min</label> </div><div class='box-counter'><div class='unit_2'>"+seconds+"</div><label>s</label>" + "</div></div>";
       } else if (diff < 86400) {
