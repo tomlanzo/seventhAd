@@ -59,6 +59,8 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
+    chart-js-rails (0.1.4)
+      railties (> 3.1)
     cloudinary (1.1.7)
       aws_cf_signer
       rest-client
@@ -248,6 +250,7 @@ DEPENDENCIES
   attachinary!
   autoprefixer-rails
   bootstrap-sass
+  chart-js-rails
   cloudinary (= 1.1.7)
   coffee-rails
   devise
