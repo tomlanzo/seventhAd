@@ -13,7 +13,11 @@
           </div>
          <p>Dommage, mauvaise réponse...</p>
        <% end %>
-       <h2>Prochaine question</h2>
+       <% if @player.next_page_path(@question)=~(/edit/) %>
+         <h2>Bien joué! Prochaine étape dans</h2>
+       <% else %>
+         <h2>Prochaine question dans</h2>
+       <% end %>
 
         <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
                              data-next-page-path="<%= @player.next_page_path(@question) %>">
