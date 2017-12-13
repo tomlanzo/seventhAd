@@ -4,18 +4,13 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.player = Player.find(params[:player_id])
     @answer.question = Question.find(params[:question_id])
-    @answer.game_session = @answer.player.game_session
     @answer.correct = @answer.choice == @answer.question.correct_answer
     if @answer.save
-      if @answer.question.position == 3
-       redirect_to edit_player_path(@answer.player)
-      else
-        @next_question = Question.where(game: @answer.question.game,
-                         position: @answer.question.position += 1)
-        redirect_to player_question_path(@answer.player, @next_question.first.id)
-      end
+      @question = @answer.question
+      @player = @answer.player
+      render 'questions/countdown'
     else
-      # render :new
+      flash[:alert] ="La réponse n'a pas été enregistrée, reesayez, svp"
     end
 
   end

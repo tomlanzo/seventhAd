@@ -4,14 +4,14 @@
     <div class="row">
       <div class="col-xs-6 card-session text-center">
         <p>Votre jeu commence dans <br>
-          <span id="countdown" data-starting-at="<%= game_session.starting_at.to_i %>">
-            20s
+          <span id="countdown" data-starting-at="<%= game_session.starting_at.to_i %>"
+                        data-next-page-path="<%= @player.next_page_path(@question) %>">
           </span>
         </p>
       </div>
       <div class="col-xs-6 card-session text-center">
         <p> Joueurs <br>
-        <span id="countdown">10</span>
+        <span id="players_present" data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></span>
         </p>
       </div>
     </div>

@@ -1,2 +1,17 @@
-<h1> Classement </h1>
-<%= render 'table2', players_ordered: players_ordered %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% players_ordered.each do |player| %>
+      <tr>
+        <th scope="row"><%= player.ranking %></th>
+        <td><%= player.name %></td>
+      </tr>
+    <tr>
+    <% end %>
+  </tbody>
+</table>
