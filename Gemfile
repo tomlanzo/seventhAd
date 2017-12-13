@@ -25,7 +25,9 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'email_validator'
+gem 'faker'
 gem 'chart-js-rails'
+
 
 group :development, :test do
   gem 'letter_opener'
