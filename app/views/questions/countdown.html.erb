@@ -1,17 +1,20 @@
-<div class="header-question">
-  <div class="container">
+<div class="banner-gs">
+  <div class="banner-logo"><%= image_tag("moving-wagon.png", class:"wagon") %>
+  </div>
+   <div class="container">
     <div class="row">
-      <div class="col-xs-6 card-session text-center">
-
 
        <% if @answer.correct %>
         <%= image_tag("happy.gif") %>
-         <h1>Bravo! Bon réponse!</h1>
+         <p>Bravo! Bonne réponse!</p>
        <% else %>
+          <div class="banner-gif">
          <%= image_tag("sadness.gif") %>
-         <h1>Dommage, mauvaise réponse...</h1>
+          </div>
+         <p>Dommage, mauvaise réponse...</p>
        <% end %>
-       <h2>Prochaine question dans</h2>
+       <h2>Prochaine question</h2>
+
         <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
                              data-next-page-path="<%= @player.next_page_path(@question) %>">
         </span>
