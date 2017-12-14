@@ -8,6 +8,10 @@
 
 # Seance.last.update(start_at: x.seconds.from_now);
 
+start_time = Time.now
+
+puts "Starting at #{start_time}"
+
 Answer.destroy_all
 Question.destroy_all
 Player.destroy_all
@@ -16,6 +20,7 @@ Seance.destroy_all
 Game.destroy_all
 Company.destroy_all
 Cinema.destroy_all
+Sidekiq::Queue.new.clear
 
  puts "#{Cinema.count} cinemas"
  puts "#{Company.count} companies"
@@ -105,36 +110,36 @@ Seance.all.each do |seance|
 end
 
 #create questions
- questions = Question.create!([
+questions = Question.create!([
     { game: game1,
       position: '1',
-      title: "Quelle est la couleur principale du logo 'Le Wagon'?",
-      answer_1: 'A. Jaune, comme le soleil',
-      answer_2: 'B. Rouge, comme le coeur',
-      answer_3: "C. Vert, comme l'espoir",
-      answer_4: "D. Les couleurs de l'arc en ciel",
+      title: "Dans quelle ville a été fondé le Wagon",
+      answer_1: 'A. Londres',
+      answer_2: 'B. Paris',
+      answer_3: 'C. Montluçon',
+      answer_4: 'D. Lyon',
       correct_answer: 2,
-      duration: 15,
+      duration: 10,
     },
     { game: game1,
       position: '2',
       title: 'Depuis quand Le Wagon est à Marseille?',
-      answer_1: 'A. Bah, ça fais que 3 mois',
-      answer_2: 'B. Depuis 1999',
-      answer_3: 'C. Je dirais 2015',
-      answer_4: 'D. Avant hier',
+      answer_1: 'A. 3 mois',
+      answer_2: 'B. 1999',
+      answer_3: 'C. 2015',
+      answer_4: 'D. Avant-hier',
       correct_answer: 3,
-      duration: 15,
+      duration: 10,
     },
     { game: game1,
       position: '3',
-      title: 'Combien ça dure la formation au Wagon?',
-      answer_1: 'A. 9 semaines!',
+      title: 'Combien dure la formation fullstack du Wagon?',
+      answer_1: 'A. 9 semaines',
       answer_2: 'B. 5 mois',
-      answer_3: 'C. Trois ans et demi',
-      answer_4: 'D. Sais pas, 2 jours?',
+      answer_3: 'C. 1 an',
+      answer_4: 'D. 15 jours',
       correct_answer: 1,
-      duration: 15,
+      duration: 10,
     },
   ])
 
@@ -144,33 +149,21 @@ cinema3 = Cinema.create!(
      address: '167 Rue Paradis, 13006 Marseille'
     })
 
- seance31 =  Seance.create!(
-     { cinema: cinema3,
-       room: "Space de coworking",
-       start_at: "13/12/2017 15:59".to_datetime,
-       movie: "Test session",
-     })
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: "15/12/2017 18:30".to_datetime,
+       start_at: 10.seconds.from_now,
        movie: "Demo day batch #89",
      })
 
    GameSession.create! (
-     { company: Company.all.sample,
-       game: game1,
-       seance: seance31,
-       offset_start: 10,
-       offset_end: 45,
-     })
-
-   GameSession.create! (
-     { company: Company.all.sample,
+    {  id: 5,
+       company: company1,
        game: game1,
        seance: seance32,
        offset_start: 10,
        offset_end: 45,
+       short_url: 'http://vu.fr/ad'
      })
 
  puts "#{Cinema.count} cinemas created"
@@ -180,3 +173,4 @@ cinema3 = Cinema.create!(
  puts "#{Question.count} questions created"
  puts "#{GameSession.count} game sessions created"
  puts "#{Player.count} players created"
+ puts "Seeds duration: #{(Time.now - start_time).to_i} seconds"

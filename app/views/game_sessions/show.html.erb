@@ -1,6 +1,8 @@
-<% if (DateTime.now < @game_session.ending_at) %>
+<% if (DateTime.now < @game_session.starting_at + @game_session.duration) %>
   <%= render 'landing', game_session: @game_session, seance: @seance %>
 <% else %>
-  <%= render 'results', game_session: @game_session, players_ordered: @players_ordered %>
+  <div id="ranking-container">
+    <%= render 'results', game_session: @game_session, players_ordered: @players_ordered, winners: @winners %>
+  </div>
 <% end %>
 

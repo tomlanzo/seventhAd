@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+before_action :disable_nav_footer
   def create
     @answer = Answer.new(answer_params)
     @answer.player = Player.find(params[:player_id])
@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     if @answer.save
       @question = @answer.question
       @player = @answer.player
-      render 'questions/countdown'
+      render 'questions/answer'
     else
       flash[:alert] ="La réponse n'a pas été enregistrée, reesayez, svp"
     end
