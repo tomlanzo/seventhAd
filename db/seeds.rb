@@ -163,7 +163,7 @@ cinema3 = Cinema.create!(
        seance: seance32,
        offset_start: 10,
        offset_end: 45,
-       short_url: 'http://vu.fr/ad'
+       short_url: 'http://7thad.eu/demo'
      })
 
  puts "#{Cinema.count} cinemas created"
