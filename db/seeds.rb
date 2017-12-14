@@ -152,7 +152,7 @@ cinema3 = Cinema.create!(
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: 30.seconds.from_now,
+       start_at: 130.seconds.from_now,
        movie: "Demo day batch #89",
      })
 
