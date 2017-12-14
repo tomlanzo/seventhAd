@@ -15,3 +15,5 @@ class CloseGameSessionJob < ApplicationJob
     end
   end
 end
+  rescue ActiveRecord::RecordNotFound
+    # NOOP

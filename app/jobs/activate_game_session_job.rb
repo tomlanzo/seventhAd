@@ -9,5 +9,7 @@ class ActivateGameSessionJob < ApplicationJob
     FinishGameSessionJob
       .set(wait_until: game_session.starting_at + game_session.duration)
       .perform_later(game_session_id)
+  rescue ActiveRecord::RecordNotFound
+    # NOOP
   end
 end

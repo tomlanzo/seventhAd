@@ -11,5 +11,7 @@ class FinishGameSessionJob < ApplicationJob
       .perform_later(game_session_id)
 
     # Rails.logger.debug "GS-DEBUG Job finish: id=#{game_session_id} status is now #{game_session.status}!"
+  rescue ActiveRecord::RecordNotFound
+    # NOOP
   end
 end
