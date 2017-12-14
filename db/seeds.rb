@@ -8,6 +8,10 @@
 
 # Seance.last.update(start_at: x.seconds.from_now);
 
+start_time = Time.now
+
+puts "Starting at #{start_time}"
+
 Answer.destroy_all
 Question.destroy_all
 Player.destroy_all
@@ -16,6 +20,7 @@ Seance.destroy_all
 Game.destroy_all
 Company.destroy_all
 Cinema.destroy_all
+Sidekiq::Queue.new.clear
 
  puts "#{Cinema.count} cinemas"
  puts "#{Company.count} companies"
@@ -114,7 +119,7 @@ questions = Question.create!([
       answer_3: 'C. Montluçon',
       answer_4: 'D. Lyon',
       correct_answer: 2,
-      duration: 15,
+      duration: 10,
     },
     { game: game1,
       position: '2',
@@ -124,7 +129,7 @@ questions = Question.create!([
       answer_3: 'C. 2015',
       answer_4: 'D. Avant-hier',
       correct_answer: 3,
-      duration: 15,
+      duration: 10,
     },
     { game: game1,
       position: '3',
@@ -134,7 +139,7 @@ questions = Question.create!([
       answer_3: 'C. 1 an',
       answer_4: 'D. 15 jours',
       correct_answer: 1,
-      duration: 15,
+      duration: 10,
     },
   ])
 
@@ -144,33 +149,21 @@ cinema3 = Cinema.create!(
      address: '167 Rue Paradis, 13006 Marseille'
     })
 
- seance31 =  Seance.create!(
-     { cinema: cinema3,
-       room: "Space de coworking",
-       start_at: "13/12/2017 15:59".to_datetime,
-       movie: "Test session",
-     })
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: "15/12/2017 18:30".to_datetime,
+       start_at: 90.seconds.from_now,
        movie: "Demo day batch #89",
      })
 
    GameSession.create! (
-     { company: Company.all.sample,
-       game: game1,
-       seance: seance31,
-       offset_start: 10,
-       offset_end: 45,
-     })
-
-   GameSession.create! (
-     { company: Company.all.sample,
+    {  id: 5,
+       company: company1,
        game: game1,
        seance: seance32,
        offset_start: 10,
        offset_end: 45,
+       short_url: 'http://vu.fr/ad'
      })
 
  puts "#{Cinema.count} cinemas created"
@@ -180,3 +173,4 @@ cinema3 = Cinema.create!(
  puts "#{Question.count} questions created"
  puts "#{GameSession.count} game sessions created"
  puts "#{Player.count} players created"
+ puts "Seeds duration: #{(Time.now - start_time).to_i} seconds"

@@ -13,6 +13,7 @@ class Question < ApplicationRecord
 
   def next_start_at(player)
 
+
     past_duration = Question.where(game: player.game_session.game,
                     position: [0..position]).sum(:duration)
 
