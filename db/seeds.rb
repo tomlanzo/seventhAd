@@ -12,14 +12,14 @@ start_time = Time.now
 
 puts "Starting at #{start_time}"
 
-Answer.destroy_all
-Question.destroy_all
-Player.destroy_all
-GameSession.destroy_all
-Seance.destroy_all
-Game.destroy_all
-Company.destroy_all
-Cinema.destroy_all
+Answer.delete_all
+Question.delete_all
+Player.delete_all
+GameSession.delete_all
+Seance.delete_all
+Game.delete_all
+Company.delete_all
+Cinema.delete_all
 Sidekiq::Queue.new.clear
 
  puts "#{Cinema.count} cinemas"
@@ -82,6 +82,7 @@ game1 = Game.create!({
     kind: 'Quizz'
     })
 
+
 Seance.all.each do |seance|
 # create seance
    g = GameSession.create! (
@@ -110,8 +111,8 @@ Seance.all.each do |seance|
       email: Faker::Internet.email("emailwithfaker"),
     }
    end
-end
    Player.create!(players_attr)
+end
 
 #create questions
 questions = Question.create!([
