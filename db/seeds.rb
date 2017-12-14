@@ -152,7 +152,7 @@ cinema3 = Cinema.create!(
      })
 
    GameSession.create! (
-    {  id: 5
+    {  id: 5,
        company: company1,
        game: game1,
        seance: seance32,
