@@ -119,7 +119,7 @@ questions = Question.create!([
       answer_3: 'C. Montluçon',
       answer_4: 'D. Lyon',
       correct_answer: 2,
-      duration: 15,
+      duration: 10,
     },
     { game: game1,
       position: '2',
@@ -129,7 +129,7 @@ questions = Question.create!([
       answer_3: 'C. 2015',
       answer_4: 'D. Avant-hier',
       correct_answer: 3,
-      duration: 15,
+      duration: 10,
     },
     { game: game1,
       position: '3',
@@ -139,7 +139,7 @@ questions = Question.create!([
       answer_3: 'C. 1 an',
       answer_4: 'D. 15 jours',
       correct_answer: 1,
-      duration: 15,
+      duration: 10,
     },
   ])
 
@@ -152,7 +152,7 @@ cinema3 = Cinema.create!(
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: 2.minutes.from_now,
+       start_at: 90.seconds.from_now,
        movie: "Demo day batch #89",
      })
 

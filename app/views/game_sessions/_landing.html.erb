@@ -8,7 +8,7 @@
     </div>
         <p class="subtitle">Votre Jeu Commence Dans</p>
 
-
+        <p>"Game session starting at: <%= game_session.starting_at %></p>
           <div class="box-counter-container">
             <span id="countdown" data-starting-at="<%= game_session.starting_at.to_i %>"
                 data-next-page-path="<%= @player.next_page_path(@question) %>">
