@@ -161,7 +161,6 @@ cinema3 = Cinema.create!(
        company: company1,
        game: game1,
        seance: seance32,
-       offset_start: 10,
        offset_end: 45,
        short_url: 'http://vu.fr/ad'
      })
