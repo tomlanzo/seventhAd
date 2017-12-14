@@ -91,23 +91,27 @@ Seance.all.each do |seance|
        offset_start: 10,
        offset_end: 45,
      })
-# create players no email
-   rand(100).times do
-     Player.create! ( {
-        game_session: g,
-        token: rand(200000000000000),
-      })
-   end
- #create players with email
-   rand(100).times do
-     Player.create! ( {
-        game_session: g,
-        token: rand(200000000000000),
-        name:Faker::Name.first_name,
-        email: Faker::Internet.email,
-      })
+
+  # create players no email
+  players_attr = rand(100).times.map do
+    {
+      game_session: g,
+      token: SecureRandom.uuid,
+    }
+  end
+  Player.create!(players_attr)
+
+  # create players with email
+  players_attr = rand(100).times.map do
+    {
+      game_session: g,
+      token: SecureRandom.uuid,
+      name: Faker::Name.first_name,
+      email: Faker::Internet.email("emailwithfaker"),
+    }
    end
 end
+   Player.create!(players_attr)
 
 #create questions
 questions = Question.create!([
