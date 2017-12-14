@@ -4,23 +4,26 @@ class GameSession < ApplicationRecord
   belongs_to :company
   belongs_to :seance
   belongs_to :game
-  enum status: [ :pending, :active, :finished ]
+  enum status: {
+    pending: 0,
+    active: 1,
+    finished: 2,
+    closed: 3,
+  }
+  after_create :enqueue_job_opener
+  before_save :initialize_gs
 
-  def update_status
-    if DateTime.now <= starting_at
-      self.pending!
-    elsif DateTime.now > starting_at && DateTime.now <= ending_at
-      self.active!
-    else
-      self.finished!
-    end
+  def enqueue_job_opener
+    ActivateGameSessionJob.set(wait_until: starting_at).perform_later(id)
   end
 
+  def initialize_gs
+    self.starting_at = start_at
+    self.ending_at = end_at
+    self.duration = duration
 
-  def update_session_start_end
-    if !starting_at
-      self.update(starting_at: start_at, ending_at: end_at,
-                  duration: calculate_duration)
+    if starting_at.future?
+      self.status = :pending
     end
   end
 
@@ -34,6 +37,15 @@ class GameSession < ApplicationRecord
     end
   end
 
+  def calculate_winners
+    self.players.update(winner: false)
+    winners = self.players.where.not(email: nil).order(ranking: :asc).first(3)
+    winners.each do |player|
+      player.winner = true
+      player.save
+    end
+  end
+
   def count_unsigned_players
     self.players.where(email: nil).count
   end
@@ -42,25 +54,23 @@ class GameSession < ApplicationRecord
     self.players.where.not(email: nil).count
   end
 
-  private
+  # private
 
-  def start_at
-    seance.start_at + (offset_start || 0).seconds
-  end
-
-  def calculate_duration
+  def duration
     if !game.questions.nil?
       duration = 0
       game.questions.each do |question|
         duration += question.duration
       end
-      duration
     end
+    duration
+  end
+
+  def start_at
+    seance.start_at + (offset_start || 0).seconds
   end
 
   def end_at
-     start_at + calculate_duration + (offset_end || 0).seconds
+     start_at + duration + (offset_end || 0).seconds
   end
-
-
 end

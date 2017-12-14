@@ -29,6 +29,9 @@ gem 'faker'
 gem 'chart-js-rails'
 
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 group :development, :test do
   gem 'letter_opener'
   gem 'pry-byebug'

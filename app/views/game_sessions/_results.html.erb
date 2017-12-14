@@ -1,4 +1,12 @@
-<h1> Classement </h1>
 <span id="ranking" data-players-ordered-url="<%= players_ordered_game_session_path(game_session) %>">
-  <%= render 'ranking', players_ordered: @players_ordered %>
+<% if game_session.closed?  %>
+  <h1> Classement Final</h1>
+  <h2>The winners are:</h2>
+  <%= render 'ranking', players_ordered: winners %>
+  <br>
+  <h2>Classement</h2>
+<% else %>
+  <h1> Classement Provisoire</h1>
+<% end %>
+  <%= render 'ranking', players_ordered: players_ordered %>
 </span>

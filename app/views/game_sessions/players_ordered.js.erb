@@ -1,3 +1,6 @@
 document
-  .getElementById("ranking")
-  .innerHTML = '<%= j render "ranking", players_ordered: @players_ordered %>';
+  .getElementById("ranking-container")
+  .innerHTML = '<%= j render "results",\
+    game_session: @game_session, \
+    players_ordered: @players_ordered, \
+    winners: @winners %>';

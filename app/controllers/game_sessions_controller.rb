@@ -3,9 +3,6 @@ class GameSessionsController < ApplicationController
   before_action :disable_nav_footer
 
   def show
-
-    @game_session.update_session_start_end
-
     @seance = @game_session.seance
 
     check_player_token
@@ -13,13 +10,11 @@ class GameSessionsController < ApplicationController
     @players = @game_session.players
     @players_count = @players.count
 
-    @players.each(&:calculate_score)
-
-    @game_session.calculate_ranking
-
     @players_ordered = @game_session.players.order(ranking: :asc)
-
+    @winners = @players_ordered.where(winner: true)
     @question = Question.new
+
+    # Rails.logger.debug "GS-DEBUG id=#{@game_session.id} status is now #{@game_session.status}!"
   end
 
   def players_count
@@ -29,6 +24,7 @@ class GameSessionsController < ApplicationController
   def players_ordered
     @game_session.calculate_ranking
     @players_ordered = @game_session.players.order(ranking: :asc)
+    @winners = @players_ordered.where(winner: true)
   end
 
   private
