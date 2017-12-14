@@ -144,33 +144,21 @@ cinema3 = Cinema.create!(
      address: '167 Rue Paradis, 13006 Marseille'
     })
 
- seance31 =  Seance.create!(
-     { cinema: cinema3,
-       room: "Space de coworking",
-       start_at: "13/12/2017 15:59".to_datetime,
-       movie: "Test session",
-     })
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: "15/12/2017 18:30".to_datetime,
+       start_at: 2.minutes.from_now,
        movie: "Demo day batch #89",
      })
 
    GameSession.create! (
-     { company: Company.all.sample,
-       game: game1,
-       seance: seance31,
-       offset_start: 10,
-       offset_end: 45,
-     })
-
-   GameSession.create! (
-     { company: Company.all.sample,
+    {  id: 5
+       company: company1,
        game: game1,
        seance: seance32,
        offset_start: 10,
        offset_end: 45,
+       short_url: 'http://vu.fr/ad'
      })
 
  puts "#{Cinema.count} cinemas created"
