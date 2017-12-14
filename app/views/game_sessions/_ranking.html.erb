@@ -9,7 +9,11 @@
     <% players_ordered.each do |player| %>
       <tr>
         <th scope="row"><%= player.ranking %></th>
-        <td><%= player.name %></td>
+        <% if player.name? %>
+          <td><%= player.name %></td>
+        <% else %>
+          <td>Inconnu</td>
+        <% end  %>
       </tr>
     <tr>
     <% end %>
