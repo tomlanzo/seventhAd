@@ -7,7 +7,7 @@ class Player < ApplicationRecord
   validates :token, presence: true
   validates :email, presence: true, email: true, if: :persisted?
   validates :name, presence: true, if: :persisted?
-  validates :ranking, numericality: true, if: :persisted?
+  validates :ranking, numericality: true, allow_nil: true
 
 
   before_validation(on: :create) do
@@ -28,18 +28,22 @@ class Player < ApplicationRecord
   end
 
   def next_page_path(question)
-
-    if question.id.nil? #if player.game_session.status == 0
-      next_question = Question.where(game: game_session.game.id, position: 1)
+    next_position = if question.new_record? #if player.game_session.status == 0
+      1
     else
-      next_question = Question.where(game: question.game,
-                      position: question.position += 1)
+      question.position + 1
     end
 
-    if next_question.empty?
+    next_question = Question \
+      .where(game: question.game, position: next_position) \
+      .order(:position) \
+      .limit(1) \
+      .first
+
+    if next_question.nil?
        edit_player_path(id)
     else
-       player_question_path(id, next_question.first.id)
+       player_question_path(id, next_question.id)
     end
   end
 

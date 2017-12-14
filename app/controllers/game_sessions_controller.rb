@@ -12,7 +12,7 @@ class GameSessionsController < ApplicationController
 
     @players_ordered = @game_session.players.order(ranking: :asc)
     @winners = @players_ordered.where(winner: true)
-    @question = Question.new
+    @question = Question.new(game: @game_session.game)
 
     # Rails.logger.debug "GS-DEBUG id=#{@game_session.id} status is now #{@game_session.status}!"
   end
