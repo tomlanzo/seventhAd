@@ -1,18 +1,28 @@
-Bravo <b><%= @player.name %></b>,
+<table width="50%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center">
+      <%= image_tag(attachments['logo.png'].url, size: 50) %>
+    </td>
+  </tr>
+</table>
 <br>
 <br>
+<div style="font-family: helvetica;">
+  Bravo <b><%= @player.name %></b>,
+  <br>
+  <br>
 
-Tu as gagné la session de jeu organisée par le Wagon et 7thAd.
-<br>
-<br>
-Cliquez sur le lien suivant, pour revoir ton super classement : <%= link_to "Voir le classement", root_url %>
-<br>
-<br>
-Ci-joint un QR code pour bénéficier de l'offre partenaire de la formation Le Wagon. Il faut te rendre directemment en magasin pour en bénéficier.
-<br>
-<br>
-Nous sommes impatients de te revoir scorer durant l'une de nos session de jeu.
-<br>
-<br>
+  Tu as gagné la session de jeu organisée par le Wagon et 7thAd.
+  <br>
+  <br>
+  Cliquez sur le lien suivant, pour revoir ton super classement : <%= link_to "Voir le classement", root_url %>
+  <br>
+  <br>
+  Voici le mot de passe à nous donner ( <strong><%= @player.id %><%= @player.game_session_id %></strong> ) pour recevoir le magnifique cadeau promotionnel offert par Le Wagon.
+  <br>
+  <br>
+  Il faut simplement te rendre sur la scène MAINTENANT !  <br>
+  <br>
 
-L'équipe de <b>7thAD</b>
+  L'équipe de <b>7thAD</b>
+</div>

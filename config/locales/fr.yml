@@ -22,3 +22,5 @@ fr:
         one: "1"
         other: "%{count}"
 
+  mailer:
+    from: "\"7thAd\" <contact@7thad.eu>"

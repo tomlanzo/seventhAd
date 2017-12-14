@@ -1,12 +1,24 @@
-Bonjour <b><%= @player.name %></b>,
-<br>
-<br>
-
-Merci d'avoir participé.
-<br>
-<br>
-Clique sur le lien suivant si tu souhaites en savoir plus sur notre partenaire : <b><%= link_to "LE WAGON", "https://www.lewagon.com/fr/aix-marseille" %></b>
-<br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center">
+      <%= image_tag(attachments['logo.png'].url, size: 50) %>
+    </td>
+  </tr>
+</table>
 <br>
 
-L'équipe de <b>7thAD</b>
+<br>
+
+<div style="font-family: helvetica;">
+  Bonjour <b><%= @player.name %></b>
+  <br>
+  <br>
+  Merci d'avoir participé à notre jeu
+  <br>
+  Clique sur le lien suivant si tu souhaites en savoir plus sur notre partenaire
+  <%= link_to "LE WAGON", "https://www.lewagon.com/fr/aix-marseille" %></b>
+  <br>
+  <br>
+
+  <p><span style="font-family: helvetica;">L'équipe de <b>7thAD</b></span></p>
+</div>
