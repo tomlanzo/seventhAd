@@ -3,12 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="7thAD crée une expérience inédite autour de vos couleurs et de votre positionnement">
-    <meta property="og:title" content="7thAd - Interagissez avec votre audience">
-    <meta property="og:image" content="demoday.png">
-    <meta property="og:description" content="7thAD crée une expérience inédite autour de vos couleurs et de votre positionnement">
-    <meta property="og:site_name" content="7thAd"/>
-    <title>Interagissez avec votre audience </title>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -26,13 +21,6 @@
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
-<!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:title" content="<%= meta_title %>">
-    <meta name="twitter:description" content="<%= meta_description %>">
-    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:image:src" content="<%= meta_image %>">
 
   </head>
   <body>

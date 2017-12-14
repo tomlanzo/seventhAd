@@ -1,6 +1,6 @@
 
-meta_product_name: "Product Name"
-meta_title: "Product name - Product tagline"
-meta_description: "Relevant description"
+meta_product_name: "7thAD"
+meta_title: "7thAD - Interagissez avec votre audience"
+meta_description: "7thAD crée une expérience inédite autour de vos couleurs et de votre positionnement"
 meta_image: "demoday.png"                       # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
+  # required for Twitter Cards
