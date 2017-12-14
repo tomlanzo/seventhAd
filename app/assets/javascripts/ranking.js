@@ -24,7 +24,15 @@ if (ranking) {
   // toutes les X secondes, refaire l'appel
   var url = ranking.dataset.playersOrderedUrl;
 
-  setInterval(function() {
+  var beginQueryAt = new Date().getTime();
+
+  var setIntervalId = setInterval(function() {
     getPlayersOrdered(url);
+
+    var now = new Date().getTime();
+
+    if (now > (beginQueryAt + 120 * 1000)) {
+      clearInterval(setIntervalId);
+    }
   }, 2000);
 }

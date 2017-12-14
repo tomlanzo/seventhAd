@@ -5,9 +5,11 @@ before_action :disable_nav_footer
   def edit; end
 
   def update
-     if @player.update(player_params)
+    if @player.game_session.closed?
+      render :too_late
+    elsif @player.update(player_params)
       redirect_to game_session_path(@player.game_session)
-     else
+    else
       render :edit
     end
   end
