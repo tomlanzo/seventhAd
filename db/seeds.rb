@@ -8,6 +8,10 @@
 
 # Seance.last.update(start_at: x.seconds.from_now);
 
+start_time = Time.now
+
+puts "Starting at #{start_time}"
+
 Answer.destroy_all
 Question.destroy_all
 Player.destroy_all
@@ -16,6 +20,7 @@ Seance.destroy_all
 Game.destroy_all
 Company.destroy_all
 Cinema.destroy_all
+Sidekiq::Queue.new.clear
 
  puts "#{Cinema.count} cinemas"
  puts "#{Company.count} companies"
@@ -168,3 +173,4 @@ cinema3 = Cinema.create!(
  puts "#{Question.count} questions created"
  puts "#{GameSession.count} game sessions created"
  puts "#{Player.count} players created"
+ puts "Seeds duration: #{(Time.now - start_time).to_i} seconds"
