@@ -63,7 +63,6 @@ class GameSession < ApplicationRecord
         duration += question.duration
       end
     end
-
     duration
   end
 
