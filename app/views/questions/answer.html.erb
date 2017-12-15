@@ -5,19 +5,21 @@
     <div class="row">
 
        <% if @answer.correct %>
-        <%= image_tag("happy.gif") %>
-         <p>Bravo! Bonne réponse!</p>
+          <div class="banner-gif">
+          <%= image_tag("happy.gif") %>
+          </div>
+          <p>Bravo! Bonne réponse!</p>
        <% else %>
           <div class="banner-gif">
-         <%= image_tag("sadness.gif") %>
+          <%= image_tag("sadness.gif") %>
           </div>
-         <p>Dommage, mauvaise réponse...</p>
+          <p>Dommage, mauvaise réponse...</p>
        <% end %>
 
        <% if @player.next_page_path(@question)=~(/edit/) %>
          <h2>Bien joué! Prochaine étape dans</h2>
        <% else %>
-         <h2>Prochaine question dans</h2>
+         <h4>Prochaine question dans</h4>
        <% end %>
 
         <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
