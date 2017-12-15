@@ -74,7 +74,8 @@ cinema2 = Cinema.create!(
 company1 = Company.create!(
     { name: 'Le Wagon',
       email: 'contact@lewagon.com',
-      password: 'password'
+      password: 'password',
+      photo_url: 'http://res.cloudinary.com/dif8cynwh/image/upload/v1513336980/j5ext4z7ohu6prwksgk3.jpg'
     })
 #create games
 game1 = Game.create!({
