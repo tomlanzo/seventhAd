@@ -117,7 +117,7 @@ end
 questions = Question.create!([
     { game: game1,
       position: '1',
-      title: "Dans quelle ville a été fondé le Wagon",
+      title: "Dans quelle ville a été fondé le Wagon?",
       answer_1: 'A. Londres',
       answer_2: 'B. Paris',
       answer_3: 'C. Montluçon',
