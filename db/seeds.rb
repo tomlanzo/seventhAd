@@ -94,7 +94,7 @@ Seance.all.each do |seance|
      })
 
   # create players no email
-  players_attr = rand(100).times.map do
+  players_attr = rand(0..40).times.map do
     {
       game_session: g,
       token: SecureRandom.uuid,
@@ -103,7 +103,7 @@ Seance.all.each do |seance|
   Player.create!(players_attr)
 
   # create players with email
-  players_attr = rand(100).times.map do
+  players_attr = rand(40..100).times.map do
     {
       game_session: g,
       token: SecureRandom.uuid,
