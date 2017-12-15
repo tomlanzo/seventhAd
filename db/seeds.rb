@@ -89,8 +89,7 @@ Seance.all.each do |seance|
      { company: company1,
        game: game1,
        seance: seance,
-       offset_start: 10,
-       offset_end: 45,
+       offset_end: 60,
      })
 
   # create players no email
@@ -124,7 +123,7 @@ questions = Question.create!([
       answer_3: 'C. Montluçon',
       answer_4: 'D. Lyon',
       correct_answer: 2,
-      duration: 10,
+      duration: 15,
     },
     { game: game1,
       position: '2',
@@ -134,7 +133,7 @@ questions = Question.create!([
       answer_3: 'C. 2015',
       answer_4: 'D. Avant-hier',
       correct_answer: 3,
-      duration: 10,
+      duration: 15,
     },
     { game: game1,
       position: '3',
@@ -144,7 +143,7 @@ questions = Question.create!([
       answer_3: 'C. 1 an',
       answer_4: 'D. 15 jours',
       correct_answer: 1,
-      duration: 10,
+      duration: 15,
     },
   ])
 
@@ -157,7 +156,7 @@ cinema3 = Cinema.create!(
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: 120.seconds.from_now,
+       start_at: 200.seconds.from_now,
        movie: "Demo day batch #89",
      })
 
@@ -166,7 +165,7 @@ cinema3 = Cinema.create!(
        company: company1,
        game: game1,
        seance: seance32,
-       offset_end: 45,
+       offset_end: 60,
        short_url: 'http://7thad.eu/demo'
      })
 
