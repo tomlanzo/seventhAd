@@ -138,7 +138,7 @@ questions = Question.create!([
     },
     { game: game1,
       position: '3',
-      title: 'Combien dure la formation fullstack du Wagon?',
+      title: 'Combien de temps dure la formation fullstack du Wagon?',
       answer_1: 'A. 9 semaines',
       answer_2: 'B. 5 mois',
       answer_3: 'C. 1 an',
@@ -157,7 +157,7 @@ cinema3 = Cinema.create!(
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: 200.seconds.from_now,
+       start_at: 180.seconds.from_now,
        movie: "Demo day batch #89",
      })
 
