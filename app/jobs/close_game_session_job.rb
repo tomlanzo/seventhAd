@@ -10,8 +10,12 @@ class CloseGameSessionJob < ApplicationJob
     game_session.reload
 
     game_session.players.each do |player|
+      next if player.email.blank? || player.email.start_with?("emailwithfaker@")
+
       PlayerMailer.congrats(player).deliver_now if player.winner
       PlayerMailer.thanks(player).deliver_now if player.email? && !player.winner
     end
+  rescue ActiveRecord::RecordNotFound
+    # NOOP
   end
 end
