@@ -31,7 +31,7 @@ if (ranking) {
 
     var now = new Date().getTime();
 
-    if (now > (beginQueryAt + 600 * 1000)) {
+    if (now > (beginQueryAt + 300 * 1000)) {
       clearInterval(setIntervalId);
     }
   }, 2000);
