@@ -20,7 +20,7 @@ before_action :attach_logo_inline
   end
 
   def attach_logo_inline
-    logo = Rails.root.join('app', 'assets', 'images', 'logo.png')
-    attachments.inline['logo.png'] = logo.read
+    logo = Rails.root.join('app', 'assets', 'images', 'Benextlogo.png')
+    attachments.inline['Benextlogo.png'] = logo.read
   end
 end
