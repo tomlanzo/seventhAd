@@ -118,7 +118,7 @@ end
 questions = Question.create!([
     { game: game1,
       position: '1',
-      title: "En quelle année Foule Access a été créée ?",
+      title: "En quelle année Reputation Squad a été créée ?",
       answer_1: 'A. 2001',
       answer_2: 'B. 2009',
       answer_3: 'C. 1984',
