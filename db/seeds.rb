@@ -121,7 +121,7 @@ questions = Question.create!([
       title: "Où se trouve le Technocentre Orange Gardens ?",
       answer_1: 'A. Paris',
       answer_2: 'B. Châtillon',
-      answer_3: 'C. Versaille',
+      answer_3: 'C. Versailles',
       answer_4: 'D. Lille',
       correct_answer: 2,
       duration: 15,
