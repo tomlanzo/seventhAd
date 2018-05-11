@@ -5,6 +5,11 @@
 $body-font: 'Oswald', sans-serif;
 $headers-font: 'Roboto Slab', serif;
 
+@font-face {
+    font-family: "StarJedi";
+    src: font-url('Starjedi.ttf') format("truetype");
+}
+
 
 
 // To use a font file (.woff) uncomment following lines

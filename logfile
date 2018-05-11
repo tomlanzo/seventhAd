@@ -1,0 +1,12 @@
+2018-05-11 12:37:08.471 CEST [7530] LOG:  listening on IPv6 address "::1", port 5432
+2018-05-11 12:37:08.471 CEST [7530] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-05-11 12:37:08.474 CEST [7530] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-05-11 12:37:08.490 CEST [7531] LOG:  database system was shut down at 2018-05-11 12:36:42 CEST
+2018-05-11 12:37:08.497 CEST [7530] LOG:  database system is ready to accept connections
+2018-05-11 12:37:22.152 CEST [7572] FATAL:  database "seventhAd_development" does not exist
+2018-05-11 12:47:07.946 CEST [7769] FATAL:  database "seventhAd_development" does not exist
+2018-05-11 12:48:37.558 CEST [7865] FATAL:  database "seventhAd_development" does not exist
+2018-05-11 12:49:40.278 CEST [7919] FATAL:  role "seventhAd" does not exist
+2018-05-11 12:59:25.487 CEST [8396] ERROR:  duplicate key value violates unique constraint "game_sessions_pkey"
+2018-05-11 12:59:25.487 CEST [8396] DETAIL:  Key (id)=(5) already exists.
+2018-05-11 12:59:25.487 CEST [8396] STATEMENT:  INSERT INTO "game_sessions" ("id", "duration", "created_at", "updated_at", "company_id", "game_id", "short_url", "starting_at", "seance_id", "offset_end", "ending_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"

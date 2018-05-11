@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "StarJedi";
+    src: font-url('Starjedi.ttf') format("truetype");
+}
 
 @keyframes unit {
   10%  { transform: translateY(-120px); }
@@ -37,7 +41,7 @@
     padding: 0;
     width: 150px;
     font-size: 75%;
-    color: rgba(255,255,255,0.6);
+    color: rgba(0,0,0,0.6);
     text-shadow: 0px 0px 5px rgba(120,170,200,0.5);
     z-index: 1001;
   }
@@ -51,8 +55,9 @@
   width: 75px;
   height: 110px;
   border-radius: 5px;
-  background: #333;
-  box-shadow: 5px 5px 0px rgba(0,0,0,0.08);
+  //background: #333;
+  background: url("texture.jpg") repeat;
+  //box-shadow: 5px 5px 0px rgba(0,0,0,0.08);
   overflow: hidden;
 }
 
@@ -65,21 +70,21 @@
   height: 100%;
   border-radius: 5px;
   background: rgba(255,255,255,0.2);
-  box-shadow: inset 0px 0px 50px 10px #000;
+  //box-shadow: inset 0px 0px 50px 10px #000;
   z-index: 999;
 }
 
 .box-counter:after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
   width: 100%;
   height: 50%;
-  border-radius: 5px 5px 0px 0px;
-  background: rgba(255,255,255,0.2);
-  box-shadow: inset 0px -50px 70px -50px rgba(100,150,180,0.35);
-  border-bottom: 1px solid rgba(100,150,180,0.22);
+  border-radius: 0px 0px 5px 5px;
+  background: rgba(0,0,0,0.1);
+  //box-shadow: inset 0px -50px 70px -50px rgba(100,150,180,0.35);
+  border-top: 1px solid rgba(100,150,180,0.22);
   z-index: 1000;
 }
 
@@ -91,20 +96,20 @@
   top: 0;
   width: 50%;
   height: 100%;
-  color: #FFF;
+  color: #000;
   text-align: center;
   line-height: 120px;
-  font-family: "Roboto";
-  font-size: 3em;
+  font-family: "StarJedi";
+  font-size: 2.5em;
   text-shadow: 0px 0px 2px rgba(255,255,255,1), 2px 2px 0px rgba(0,0,0,0.08);
 }
 
 .box-counter .unit_2 {
-  color: #FFF;
+  color: #000;
   text-align: center;
-  line-height: 120px;
-  font-family: "Roboto";
-  font-size: 3em;
+  line-height: 105px;
+  font-family: "StarJedi";
+  font-size: 2.5em;
   text-shadow: 0px 0px 2px rgba(255,255,255,1), 2px 2px 0px rgba(0,0,0,0.08);
 }
 
