@@ -1,12 +1,9 @@
 
-<div class="banner-gs">
-  <div class="banner-logo"><%= image_tag("orange.png", class:"wagon") %></div>
+<div class="banner-gs" style="background: url( <%= image_path "fond.png" %>) center;">
 
-  <div class="container">
-    <div class="row">
-         <p class="main-title">LE QUIZZ Orange</p>
-    </div>
-        <p class="subtitle">Votre Jeu Commence Dans</p>
+  <div class="container" style="padding-top: 250px;">
+
+        <p class="subtitle" style="font-family: StarJedi;">Début du Jeu Dans</p>
 
           <div class="box-counter-container">
             <span id="countdown" data-starting-at="<%= game_session.starting_at.to_i %>"
@@ -44,13 +41,15 @@
 
 
         <div class="user-count">
-          <p class="subtitle">Nombre de Joueurs</p>
 
-          <div id="players_present" class="player-count"  data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count %></div>
+
+          <div id="players_present" class="player-count"  data-players-count-url="<%= players_count_game_session_path(game_session) %>"><%= @players_count%>
+          </div>
+
         </div>
 
 
 
-</div>
+  </div>
 
 </div>
