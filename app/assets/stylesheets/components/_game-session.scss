@@ -73,8 +73,8 @@
 
     .player-count {
       font-family: StarJedi;
-      padding: 68px;
-      font-size: 55px;
+      padding: 60px;
+      font-size: 50px;
       color: black;
       background: url("texture.jpg") repeat;
       border-radius: 50%;
@@ -101,4 +101,19 @@
   background-repeat: repeat-x;
   font-family: StarJedi;
   color: black;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+.btn-danger1 {
+  background-image: url("texture-reponse.jpg");
+  background-repeat: repeat-x;
+  font-family: StarJedi;
+  color: black;
+  font-size: 9px;
+  border: 0px solid transparent;
+}
+
+.btn-danger1:hover {
+  color: white;
 }
