@@ -13,11 +13,11 @@
       var label;
 
       if (diff < 60) {
-        label = "<div class='box-counter-container'><div class='box-counter'><div class='unit_2'>"+ seconds+"</div><label>s</label>" + "</div></div>";
+        label = "<div class='box-counter-container'><div class='box-counter' style='background-image: url(<%= image_path "texture.jpg" %>);'><div class='unit_2'>"+ seconds+"</div><label>s</label>" + "</div></div>";
       } else if (diff < 3600) {
-        label = "<div class='box-counter-container'><div class='box-counter'><div class='unit_2'>" + mnts+"</div> <label>min</label> </div><div class='box-counter'><div class='unit_2'>"+seconds+"</div><label>s</label>" + "</div></div>";
+        label = "<div class='box-counter-container'><div class='box-counter' style='background-image: url(<%= image_path "texture.jpg" %>);'><div class='unit_2'>" + mnts+"</div> <label>min</label> </div><div class='box-counter'><div class='unit_2'>"+seconds+"</div><label>s</label>" + "</div></div>";
       } else if (diff < 86400) {
-        label = "<div class='box-counter-container'><div class='box-counter'><div class='unit_2'>" + hrs+"</div> <label>h</label> </div><div class='box-counter'><div class='unit_2'>"+mnts+" "+seconds+" s";
+        label = "<div class='box-counter-container'><div class='box-counter' style='background-image: url(<%= image_path "texture.jpg" %>);'><div class='unit_2'>" + hrs+"</div> <label>h</label> </div><div class='box-counter'><div class='unit_2'>"+mnts+" "+seconds+" s";
       } else {
         label = days+" d "+hrs+" h "+mnts+" min "+seconds+" s";
       }
