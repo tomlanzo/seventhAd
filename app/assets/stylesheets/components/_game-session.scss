@@ -76,7 +76,8 @@
       padding: 60px;
       font-size: 50px;
       color: black;
-      background: url("texture.jpg") repeat;
+      background-image: url("texture.jpg");
+      background-repeat: repeat;
       border-radius: 50%;
       width: 100px;
       height: 100px;
