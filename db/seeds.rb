@@ -124,7 +124,7 @@ questions = Question.create!([
       answer_3: 'Woody Harrelson',
       answer_4: 'Harrison Ford',
       correct_answer: 2,
-      duration: 4000,
+      duration: 18,
     },
     { game: game1,
       position: '2',
@@ -134,7 +134,7 @@ questions = Question.create!([
       answer_3: 'Le Faucon Millenium',
       answer_4: 'Le X-Wing',
       correct_answer: 3,
-      duration: 15,
+      duration: 18,
     },
     { game: game1,
       position: '3',
@@ -144,7 +144,7 @@ questions = Question.create!([
       answer_3: 'Pork',
       answer_4: 'Gungan',
       correct_answer: 1,
-      duration: 15,
+      duration: 18,
     },
   ])
 
