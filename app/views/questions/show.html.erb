@@ -3,11 +3,11 @@
 
 
 
-  <div class="container">
+  <div class="container" style="padding-top: 140px;">
 
-    <div class="row">
+    <div class="row" >
 
-      <p class="main-title">Question <%= @question.position%></p>
+      <p style="font-family: StarJedi;">Question <%= @question.position%></p>
    </div>
 
       <div class="box-counter-container">
@@ -15,8 +15,7 @@
         <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>" data-next-page-path="<%= @player.next_page_path(@question) %>">
         </span>
              <div class="box-counter hours">
-
-              <div class="box-counter one-sixtieth-second">
+               <div class="box-counter one-sixtieth-second">
                 <ul class="ten">
                   <li>5</li>
                   <li>4</li>
@@ -38,11 +37,11 @@
                   <li>0</li>
                 </ul>
                 <label>ms</label>
+              </div>
             </div>
           </div>
-        </div>
 
-      <p class="subtitle"><%= @question.title %></p>
+      <p class="subtitle1"> <%= @question.title %> </p>
       <div class="row">
       <div class="col-xs-12 marginb3">
         <%= simple_form_for [@player, @question, @answer] do |f| %>
