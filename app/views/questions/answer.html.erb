@@ -1,25 +1,23 @@
-<div class="banner-gs">
-  <div class="banner-logo"><%= image_tag("orange.png", class:"wagon") %>
-  </div>
-   <div class="container">
+<div class="banner-gs" style="background: url( <%= image_path "fond-reponse.jpg" %>) center;">
+   <div class="container" style="padding-top: 177px";>
     <div class="row">
 
        <% if @answer.correct %>
+          <p style="font-family: StarJedi;">Bonne réponse !</p>
           <div class="banner-gif">
-          <%= image_tag("happy.gif") %>
+          <%= image_tag("giphy.gif") %>
           </div>
-          <p>Bravo! Bonne réponse!</p>
-       <% else %>
+      <% else %>
+          <p style="font-family: StarJedi;">Mauvaise réponse !</p>
           <div class="banner-gif">
-          <%= image_tag("sadness.gif") %>
+          <%= image_tag("giphy1.gif") %>
           </div>
-          <p>Dommage, mauvaise réponse...</p>
        <% end %>
 
        <% if @player.next_page_path(@question)=~(/edit/) %>
-         <h4>Prochaine étape dans</h4>
+         <h4 style="font-family: StarJedi";>La suite dans</h4>
        <% else %>
-         <h4>Prochaine question dans</h4>
+         <h4 style="font-family: StarJedi";>Prochaine question dans</h4>
        <% end %>
 
         <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"

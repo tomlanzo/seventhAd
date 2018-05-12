@@ -41,7 +41,18 @@
   .subtitle {
     text-transform: uppercase;
     font-size: 25px;
-    color: $my-gray;
+    color: black;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .subtitle1 {
+    background: rgba(255, 255, 255, 0.8);
+    font-family: StarJedi;
+    text-transform: uppercase;
+    font-size: 25px;
+    color: black;
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 15px;
@@ -61,10 +72,11 @@
     font-weight: lighter;
 
     .player-count {
-      padding: 50px;
-      font-size: 50px;
+      font-family: StarJedi;
+      padding: 68px;
+      font-size: 55px;
       color: black;
-      background:#EFEBE2;
+      background: url("texture.jpg") repeat;
       border-radius: 50%;
       width: 100px;
       height: 100px;
@@ -82,4 +94,11 @@
   font-weight: bolder;
   color: black;
   margin-bottom: 30px;
+}
+
+.btn-danger {
+  background-image: url("texture-reponse.jpg");
+  background-repeat: repeat-x;
+  font-family: StarJedi;
+  color: black;
 }
