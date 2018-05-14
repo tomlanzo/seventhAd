@@ -47,25 +47,25 @@
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden,
               input_html: { value: '1' } %>
-          <%= f.submit "#{@question.answer_1}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" %>
+          <%= f.submit "#{@question.answer_1}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" style:background-image: url(<%= image_path "texture-reponse.jpg" %>)%>
         <% end %>
         </div>
         <div class="col-xs-12 marginb3">
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '2' } %>
-          <%= f.submit "#{@question.answer_2}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" %>
+          <%= f.submit "#{@question.answer_2}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" style:background-image: url(<%= image_path "texture-reponse.jpg" %>)%>
         <% end %>
         </div>
         <div class="col-xs-12 marginb3">
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '3' } %>
-          <%= f.submit "#{@question.answer_3}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" %>
+          <%= f.submit "#{@question.answer_3}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" style:background-image: url(<%= image_path "texture-reponse.jpg" %>)%>
         <% end %>
         </div>
         <div class="col-xs-12">
         <%= simple_form_for [@player, @question, @answer] do |f| %>
           <%= f.input :choice, as: :hidden, input_html: { value: '4' } %>
-          <%= f.submit "#{@question.answer_4}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" %>
+          <%= f.submit "#{@question.answer_4}", class: "col-xs-offset-1 col-xs-10 col-xs-offset-1  btn btn-lg btn-danger padded3" style:background-image: url(<%= image_path "texture-reponse.jpg" %>)%>
         <% end %>
          </div>
         </div>
