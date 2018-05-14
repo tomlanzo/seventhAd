@@ -124,7 +124,7 @@ questions = Question.create!([
       answer_3: 'woody harrelson',
       answer_4: 'harrison ford',
       correct_answer: 2,
-      duration: 3000,
+      duration: 18,
 
     },
 
@@ -159,7 +159,7 @@ cinema3 = Cinema.create!(
  seance32 =  Seance.create!(
      { cinema: cinema3,
        room: "Space de coworking",
-       start_at: 30.seconds.from_now,
+       start_at: 100.seconds.from_now,
        movie: "Demo day batch #89",
      })
 
