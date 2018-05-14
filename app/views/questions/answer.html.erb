@@ -3,21 +3,21 @@
     <div class="row">
 
        <% if @answer.correct %>
-          <p style="font-family: StarJedi;">Bonne réponse !</p>
+          <p style="font-family: StarJedi;">bonne réponse !</p>
           <div class="banner-gif">
           <%= image_tag("giphy.gif") %>
           </div>
       <% else %>
-          <p style="font-family: StarJedi;">Mauvaise réponse !</p>
+          <p style="font-family: StarJedi;">mauvaise réponse !</p>
           <div class="banner-gif">
           <%= image_tag("giphy1.gif") %>
           </div>
        <% end %>
 
        <% if @player.next_page_path(@question)=~(/edit/) %>
-         <h4 style="font-family: StarJedi";>La suite dans</h4>
+         <h4 style="font-family: StarJedi";>la suite dans</h4>
        <% else %>
-         <h4 style="font-family: StarJedi";>Prochaine question dans</h4>
+         <h4 style="font-family: StarJedi";>prochaine question dans</h4>
        <% end %>
 
         <span id="countdown" data-starting-at="<%= @question.next_start_at(@player).to_i %>"
