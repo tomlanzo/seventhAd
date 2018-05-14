@@ -71,9 +71,10 @@
     color: white;
     font-weight: lighter;
 
+
     .player-count {
       font-family: StarJedi;
-      padding: 60px;
+      padding: 50px;
       font-size: 50px;
       color: black;
       background-image: url("texture.jpg");
@@ -84,7 +85,23 @@
       margin: 20px auto;
       display: flex;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
+
+    }
+
+    h1 {
+      font-family: StarJedi;
+      font-size: 60px;
+      margin: 12px 0 0 0;
+
+    }
+
+    p {
+      font-family: StarJedi;
+      margin-top: 3px;
+      font-size: 12px;
+
     }
   }
 

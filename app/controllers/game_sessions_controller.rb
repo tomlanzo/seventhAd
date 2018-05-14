@@ -18,7 +18,7 @@ class GameSessionsController < ApplicationController
   end
 
   def players_count
-    @players_count = @game_session.players.count
+    @players_count = @game_session.players.count + "<br/><label>joueurs</label>"
   end
 
   def players_ordered
