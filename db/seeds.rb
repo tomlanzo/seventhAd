@@ -125,7 +125,9 @@ questions = Question.create!([
       answer_4: 'Harrison Ford',
       correct_answer: 2,
       duration: 3000,
+
     },
+
     { game: game1,
       position: '2',
       title: "Quel est le nom du vaisseau mythique de Han Solo?",
