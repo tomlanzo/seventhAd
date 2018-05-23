@@ -27,5 +27,7 @@ if (players_present) {
 
   setInterval(function() {
     getPlayersCount(url);
+    alert("step");
+
   }, 2000);
 }
