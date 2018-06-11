@@ -11,6 +11,8 @@ gem 'redis'
 gem 'devise'
 gem 'devise-i18n'
 gem 'postmark-rails'
+gem 'omniauth-facebook'
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
